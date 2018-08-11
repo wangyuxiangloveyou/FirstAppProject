@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, ‘8.0’
+
+target 'TianLinStreetAdministration' do
+    use_frameworks!
+    
+    pod 'Alamofire'
+    pod 'Kingfisher'
+    pod 'MJRefresh'
+    pod 'SnapKit'
+    pod 'SwiftyJSON'
+    pod 'MJExtension'
+    pod 'Toast-Swift'
+    pod 'MBProgressHUD'
+    pod 'IQKeyboardManagerSwift'
+    pod 'CVCalendar', '~> 1.4.1'
+#    ˜˜'
+    target 'TianLinStreetAdministrationTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
+    target 'TianLinStreetAdministrationUITests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
+end
