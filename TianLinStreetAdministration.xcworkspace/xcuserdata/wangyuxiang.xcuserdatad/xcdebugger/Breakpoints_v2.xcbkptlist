@@ -148,13 +148,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
-            timestampString = "555584282.371147"
+            timestampString = "555698098.827636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "loadData1()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -164,13 +164,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
-            timestampString = "555584282.371666"
+            timestampString = "555698098.856796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "loadData2()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
