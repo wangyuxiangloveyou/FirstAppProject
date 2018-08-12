@@ -107,6 +107,8 @@ class DrugAddictsDetailsViewController: UIViewController {
                    self.dataSource1.append(dic1)
                     for i in 0..<model1.alarms!.count-1{
                         //初始化日期格式器
+                        
+                        //初始化日期格式器
                         //if i<model1.alarms!.count-1{
                             let sub1 = model1.alarms![i].alarmTime!.prefix(10)
                             let sub2 = model1.alarms![i+1].alarmTime!.prefix(10)
