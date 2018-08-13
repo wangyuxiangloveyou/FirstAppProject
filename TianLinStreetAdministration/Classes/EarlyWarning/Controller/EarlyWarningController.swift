@@ -47,6 +47,8 @@ class EarlyWarningController: UIViewController,UITableViewDelegate,UITableViewDa
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
              "villageIDs":villageArray
         ]

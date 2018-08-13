@@ -67,6 +67,8 @@ class UntreatedView: UIView {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "alarmID": "5c83b8dfd8ab492390bcb1469f2536c4",
             "resultType": 1,
@@ -74,7 +76,7 @@ class UntreatedView: UIView {
         
         print("上报信息")
         print(parameters)
-        print(1111111111111111)
+       // print(1111111111111111)
         
         Alamofire.request("http://47.75.190.168:5000/api/app/alarmProcessReport", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
             

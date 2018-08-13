@@ -76,6 +76,8 @@ class DrugAddictsDetailsViewController: UIViewController {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "modelID": name1,
             "state": state,
@@ -86,7 +88,7 @@ class DrugAddictsDetailsViewController: UIViewController {
         
         print("获取报警信息")
         print(parameters)
-        print(1111111111111111)
+        //print(1111111111111111)
         
         Alamofire.request("http://47.75.190.168:5000/api/app/getAlarmList", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
             
@@ -100,9 +102,10 @@ class DrugAddictsDetailsViewController: UIViewController {
                 if (json?.length)! >= 60{
                     let model1:DetailsModel = DetailsModel.mj_object(withKeyValues: dic)
                      self.dataSource1.removeAll()
-                    var dic1=NewModel()
-                   dic1.alarmTime=model1.alarms![0].alarmTime
-                    dic1.alarmID=model1.alarms![0].alarmID
+                    var dic1=alarmsDetailsModel()
+//                   dic1.alarmTime=model1.alarms![0].alarmTime
+//                    dic1.alarmID=model1.alarms![0].alarmID
+                   dic1=model1.alarms![1]
                    dic1.state=1
                    self.dataSource1.append(dic1)
                     for i in 0..<model1.alarms!.count-1{
@@ -117,29 +120,33 @@ class DrugAddictsDetailsViewController: UIViewController {
                             let oneDate = formatter.date(from: String(sub1))
                             let twoDate = formatter.date(from: String(sub2))
                             if  oneDate! != twoDate!  {
-                                let dic5=NewModel()
-                                dic5.alarmTime=model1.alarms![i].alarmTime
-                                dic5.alarmID=model1.alarms![i].alarmID
+                                var dic5=alarmsDetailsModel()
+//                                dic5.alarmTime=model1.alarms![i].alarmTime
+//                                dic5.alarmID=model1.alarms![i].alarmID
+                                dic5=model1.alarms![i]
                                 dic5.state=0
                                 self.dataSource1.append(dic5)
                                 
-                                let dic4=NewModel()
-                                dic4.alarmTime=model1.alarms![i+1].alarmTime
-                                 dic4.alarmID=model1.alarms![i+1].alarmID
+                                var dic4=alarmsDetailsModel()
+//                                dic4.alarmTime=model1.alarms![i+1].alarmTime
+//                                 dic4.alarmID=model1.alarms![i+1].alarmID
+                                dic4=model1.alarms![i+1]
                                 dic4.state=1
                                 self.dataSource1.append(dic4)
                             }
                             if  oneDate! == twoDate!  {
-                                let dic2=NewModel()
-                                dic2.alarmTime=model1.alarms![i].alarmTime
-                                dic2.alarmID=model1.alarms![i].alarmID
+                                var dic2=alarmsDetailsModel()
+//                                dic2.alarmTime=model1.alarms![i].alarmTime
+//                                dic2.alarmID=model1.alarms![i].alarmID
+                                dic2=model1.alarms![i]
                                 dic2.state=0
                                 self.dataSource1.append(dic2)
                             }
                             if  i==model1.alarms!.count-2  {
-                                let dic3=NewModel()
-                                dic3.alarmTime=model1.alarms![i+1].alarmTime
-                                dic3.alarmID=model1.alarms![i+1].alarmID
+                                var dic3=alarmsDetailsModel()
+//                                dic3.alarmTime=model1.alarms![i+1].alarmTime
+//                                dic3.alarmID=model1.alarms![i+1].alarmID
+                                dic3=model1.alarms![i+1]
                                 dic3.state=0
                                 self.dataSource1.append(dic3)
                             }
@@ -215,7 +222,7 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         let model:NewModel=dataSource1[indexPath.section] as! NewModel
+         let model:alarmsDetailsModel=dataSource1[indexPath.section] as! alarmsDetailsModel
         if model.state == 1{
          return 35
         }
@@ -228,7 +235,7 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let model:NewModel=dataSource1[indexPath.section] as! NewModel
+        let model:alarmsDetailsModel=dataSource1[indexPath.section] as! alarmsDetailsModel
         print(model.state)
         if model.state==1{
             let cell:TitleTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCellId", for: indexPath as IndexPath) as! TitleTableViewCell
@@ -260,7 +267,7 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
-         let model:NewModel=dataSource1[indexPath.section] as! NewModel
+         let model:alarmsDetailsModel=dataSource1[indexPath.section] as! alarmsDetailsModel
         if model.state==1{
             return false
         }else{
@@ -281,7 +288,7 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
                 print(self.idName)
                 self.loadData1()
                 
-                print(11111111111)
+               
             }
             
             more.backgroundColor = UIColor.orange

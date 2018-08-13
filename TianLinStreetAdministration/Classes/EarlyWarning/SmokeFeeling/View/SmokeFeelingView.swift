@@ -180,11 +180,13 @@ class SmokeFeelingView: UIView,RefreshProtocol {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "villageIDs":villageArray,
             "status":0,
             "pageNum":1,
-            "pageSize":15,
+            "pageSize":20,
             ]
         Alamofire.request("http://47.75.190.168:5000/api/app/getSmokeDetectorEventList", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
             print(token1)

@@ -90,6 +90,8 @@ class UntreatedReadView: UIView {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "villageIDs":villageArray,
             "status":0,

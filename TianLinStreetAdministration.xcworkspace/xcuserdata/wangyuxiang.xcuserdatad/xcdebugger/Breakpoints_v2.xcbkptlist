@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
-            timestampString = "554624820.643236"
+            timestampString = "555837066.4795769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -147,29 +147,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
-            timestampString = "555773408.8046221"
+            filePath = "TianLinStreetAdministration/Classes/Login/Controller/LoginInterfaceViewController.swift"
+            timestampString = "555837066.479731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "loadData1()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
-            timestampString = "555773408.8156379"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "loadData2()"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "enterClick(Btn:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

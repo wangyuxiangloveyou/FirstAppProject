@@ -54,6 +54,8 @@ class HomePageController: UIViewController {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ]
         ]
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)

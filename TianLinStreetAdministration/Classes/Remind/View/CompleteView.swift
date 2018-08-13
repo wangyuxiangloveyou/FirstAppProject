@@ -36,6 +36,8 @@ class CompleteView: UIView {
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ]
         ]
         print(parameters)

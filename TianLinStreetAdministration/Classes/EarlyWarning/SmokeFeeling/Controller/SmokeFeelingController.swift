@@ -109,6 +109,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "status":1,
             "eventID":id1,

@@ -282,11 +282,13 @@
                     "platform":"app",
                     "timestamp":timeStamp,
                     "token":"app",
+                    "longitude":longitude,
+                    "latitude":latitude,
                 ],
                 "userName": "apptest",
                 "password": "123456"
             ]
-            
+            print(parameters)
 //          let vc=HomePageController()
 //          vc.hidesBottomBarWhenPushed=true
 //          self.navigationController?.pushViewController(vc, animated: true)

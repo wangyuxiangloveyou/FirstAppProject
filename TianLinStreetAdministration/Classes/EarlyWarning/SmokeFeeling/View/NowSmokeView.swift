@@ -61,7 +61,6 @@ extension NowSmokeView:UITableViewDelegate,UITableViewDataSource
         moneyTitle.addAttribute(NSFontAttributeName, value:UIFont.systemFont(ofSize:16), range:NSRange.init(location:6, length: 1))
         cell.AdressLabel.attributedText = moneyTitle
         
-        
         cell.PersonLabel.text="常住人口 共4人"
         cell.NameLabel.text="业主:张玲玲"
         cell.TimeLabel.text="2018-02-19 13:22:34"

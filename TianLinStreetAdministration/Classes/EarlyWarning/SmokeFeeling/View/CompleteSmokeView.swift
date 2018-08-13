@@ -113,11 +113,13 @@ class CompleteSmokeView: UIView,RefreshProtocol{
                 "platform":"app",
                 "timestamp":timeStamp,
                 "token":token1,
+                "longitude":longitude,
+                "latitude":latitude,
             ],
             "villageIDs":villageArray,
             "status":2,
             "pageNum":1,
-            "pageSize":10,
+            "pageSize":20,
             ]
         print(parameters)
         
@@ -233,8 +235,11 @@ extension CompleteSmokeView:UITableViewDelegate,UITableViewDataSource
         let cell:CompleteSmokeCell = tableView.dequeueReusableCell(withIdentifier: "CompleteSmokeCellId", for: indexPath as IndexPath) as! CompleteSmokeCell
         let model:CompleteSmokeEventsModel=self.dataArray[indexPath.row] as! CompleteSmokeEventsModel
         cell.FirstmageView.image=UIImage(named: "居民楼-黑.png")
-        let str = model.villageName!+"-"+"\(model.buildingNo!)"+"栋-"+"\(model.houseNo!)"
-        cell.AdressLabel.text=str
+        if model.villageName != nil && model.buildingNo != nil && model.houseNo != nil{
+            let str = model.villageName!+"-"+"\(model.buildingNo!)"+"栋-"+"\(model.houseNo!)"
+            cell.AdressLabel.text=str
+        }
+        
         cell.AdressLabel.textColor=UIColor.init(red: 0/255, green: 123/255, blue: 195/255, alpha: 1)
         cell.TimeLongLabel.textAlignment = .center
         cell.Person.text="共"+"\(model.residentNum!)"+"人"
@@ -290,11 +295,11 @@ extension CompleteSmokeView:UITableViewDelegate,UITableViewDataSource
                 }
                 if model.resultType[i] == 3{
                     cell.TimeLongLabel.text="接单超时"
-                cell.TimeLongLabel.backgroundColor=UIColor.init(red: 146/255, green: 203/255, blue: 197/255, alpha: 1)
+                    cell.TimeLongLabel.backgroundColor=UIColor.init(red: 146/255, green: 203/255, blue: 197/255, alpha: 1)
                 }
             }
         }
-       
+        
         
         cell.selectionStyle = .none
         return cell
