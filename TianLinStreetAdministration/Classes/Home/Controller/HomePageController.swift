@@ -260,7 +260,6 @@ class HomePageController: UIViewController {
             make.width.equalTo(41)
         }
         
-        
         let warninglabel = UILabel()
         warningImageView.addSubview(warninglabel)
         warninglabel.text=blockName2

@@ -33,6 +33,7 @@ class NewModel: NSObject {
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
     }
 }
+
 class trafficRecordsModel1: NSObject {
     var modelID:String?
     var modelName:String?

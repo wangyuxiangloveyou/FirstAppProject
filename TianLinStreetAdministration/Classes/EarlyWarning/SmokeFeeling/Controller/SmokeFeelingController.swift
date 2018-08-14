@@ -131,7 +131,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
             {
                 print("dic: \(response)")
             }
-            self.ThreeView?.startRefreshData()
+            self.ThreeView?.startRefreshData1()
         }
     }
     
@@ -611,7 +611,7 @@ extension SmokeFeelingController:KtcSegCtrlDelegate{
             allLabel.removeFromSuperview()
         }
         if segCtrl.selectIndex == 2{
-            ThreeView?.startRefreshData()
+            ThreeView?.startRefreshData1()
         }
        
         if segCtrl.selectIndex != 1{
@@ -637,7 +637,7 @@ extension SmokeFeelingController:UIScrollViewDelegate{
         }
         
         if segCtrl?.selectIndex == 2{
-            self.ThreeView?.startRefreshData()
+            self.ThreeView?.startRefreshData1()
         }
         
         if segCtrl?.selectIndex != 1{

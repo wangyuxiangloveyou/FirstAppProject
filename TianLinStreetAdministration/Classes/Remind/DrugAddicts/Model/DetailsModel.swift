@@ -13,29 +13,52 @@ import Toast_Swift
 import MBProgressHUD
 import MJExtension
 
+
+//protocol Copyable {
+//    func copy() -> Self
+//}
+
 @objc(DetailsModel)
 
-class DetailsModel: NSObject,NSCopying {
-    func copy(with zone: NSZone? = nil) -> Any {
-        let theCopyObj = type(of: self).init()
-        theCopyObj.alarms = self.alarms
-        return theCopyObj
+
+class DetailsModel: NSObject {
+    var alarms:[alarmsDetailsModel]?
+    var responseStatus:DetailsStatusModel?
+  
+
+//    override func mj_keyValuesDidFinishConvertingToObject() {
+//        self.alarms = alarmsDetailsModel.mj_objectArray(withKeyValuesArray: self.alarms).copy() as? [alarmsDetailsModel]
+//    }
+    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["alarms" :NSStringFromClass(alarmsDetailsModel.self)]
     }
+}
+
+class alarmsDetailsModel: NSObject,NSCopying{
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let alarmsDetailsModel1=alarmsDetailsModel()
+        alarmsDetailsModel1.state=self.state
+        alarmsDetailsModel1.alarmID=self.alarmID
+        alarmsDetailsModel1.alarmTime=self.alarmTime
+        alarmsDetailsModel1.buildingNo=self.buildingNo
+        alarmsDetailsModel1.houseNo=self.houseNo
+        alarmsDetailsModel1.peopleName=self.peopleName
+        alarmsDetailsModel1.tag=self.tag
+        alarmsDetailsModel1.trafficRecords=self.trafficRecords
+        alarmsDetailsModel1.visitorRecords=self.visitorRecords
+         return alarmsDetailsModel1
+    }
+    
+//    func copyWithZone(zone: NSZone) -> AnyObject {
+//        let alarmsDetailsModel = alarmsDetailsModel()
+//        alarmsDetailsModel.name = self.name
+//        return theCopyObj
+//    }
     //必须使用required关键字修饰
     required override init() {
         
     }
-    var alarms:[alarmsDetailsModel]?
-     var responseStatus:DetailsStatusModel?
-    
-    override func mj_keyValuesDidFinishConvertingToObject() {
-        self.alarms = alarmsDetailsModel.mj_objectArray(withKeyValuesArray: self.alarms).copy() as? [alarmsDetailsModel]
-    }
-}
-
-class alarmsDetailsModel: NSObject{
-    
-    
     var alarmTime:String?
     var alarmID:String?
     var buildingNo:String?

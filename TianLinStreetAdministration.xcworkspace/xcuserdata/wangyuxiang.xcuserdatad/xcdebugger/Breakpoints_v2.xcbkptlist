@@ -4,54 +4,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
-            timestampString = "555837066.4795769"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "loadData1()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in TianLinStreetAdministration.CompleteSmokeView.loadData1() -&gt; ()"
-                  moduleName = "TianLinStreetAdministration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangyuxiang/TianLinStreetAdministration/TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
-                  timestampString = "554105745.16277"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "2134">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in TianLinStreetAdministration.CompleteSmokeView.loadData1() -&gt; ()"
-                  moduleName = "TianLinStreetAdministration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangyuxiang/TianLinStreetAdministration/TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
-                  timestampString = "554105745.16468"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "5110">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -68,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/Controller/SmokeFeelingController.swift"
-            timestampString = "555582033.5700769"
+            timestampString = "555869491.4348249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "526"
@@ -89,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "641"
             endingLineNumber = "641"
-            landmarkName = "c()"
+            landmarkName = "sayClick2(btn:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -116,13 +68,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/Controller/SmokeFeelingController.swift"
-            timestampString = "555582033.570228"
+            timestampString = "555869491.4349281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
-            landmarkName = "textView(_:shouldInteractWith:in:interaction:)"
-            landmarkType = "7">
+            landmarkName = "SmokeFeelingController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -147,13 +99,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TianLinStreetAdministration/Classes/Login/Controller/LoginInterfaceViewController.swift"
-            timestampString = "555837066.479731"
+            filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
+            timestampString = "555869491.434991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "enterClick(Btn:)"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TianLinStreetAdministration/Classes/Remind/DrugAddicts/Controller/DrugAddictsDetailsViewController.swift"
+            timestampString = "555869491.43504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "loadData2()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
+            timestampString = "555869491.4350899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "loadData1()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/Controller/SmokeFeelingController.swift"
+            timestampString = "555869491.435463"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "633"
+            endingLineNumber = "633"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
+            timestampString = "555869491.435511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "loadData1()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TianLinStreetAdministration/Classes/EarlyWarning/SmokeFeeling/View/CompleteSmokeView.swift"
+            timestampString = "555869491.435729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "loadData1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
