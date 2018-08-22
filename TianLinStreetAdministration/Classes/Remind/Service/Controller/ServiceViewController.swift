@@ -122,7 +122,7 @@ class ServiceViewController: UIViewController {
 extension ServiceViewController:KtcSegCtrlDelegate{
     func segCtrl(segCtrl: KtcSegCtrl, didClickBtnIndex index: Int) {
         scrollView?.setContentOffset(CGPoint(x: CGFloat(index)*screenWidth, y: 0), animated: true)
-        
+        //w q e
     }
 }
 
