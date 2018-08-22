@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-public var unDrugDataArray1:[AnyObject]=[]
+
 class UnDrugAddictsView: UIView {
    // var dataArray:[UnDrugAddictsGroupsModel]=[]
     var cellClourseONE:IngreJumpClosure?

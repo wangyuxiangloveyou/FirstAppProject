@@ -14,9 +14,7 @@
     import SwiftyJSON
     import MJExtension
     import MBProgressHUD
-    public var strLoginname:String=""
-    public var token1:String=""
-    public var strPassword:String=""
+    
     
     
     class LoginInterfaceViewController: UIViewController, UITextFieldDelegate {
@@ -39,17 +37,27 @@
             super.viewDidLoad()
             self.view.backgroundColor=UIColor.white
             configUI()
+            
             print("wyx: \(navigationBarHeight)")
         }
         
         func configUI()
         {
-            let backImage=UIImageView()
-            backImage.image=UIImage(named: "mmexport1525609772323.jpg")
-            view.addSubview(backImage)
-            backImage.snp.makeConstraints { (make) in
-                make.left.right.top.bottom.equalTo(view)
-            }
+            
+            
+            //创建一个用于显示背景图片的imageView
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: "mmexport1525609772323.jpg")
+            backgroundImage.contentMode = .scaleAspectFill //等比缩放填充（图片可能有部分显示不全）
+            //将背景图片imageView插入到当前视图中
+            view.insertSubview(backgroundImage, at: 0)
+            
+//            let backImage=UIImageView()
+//            backImage.image=UIImage(named: "mmexport1525609772323.jpg")
+//            view.addSubview(backImage)
+//            backImage.snp.makeConstraints { (make) in
+//                make.left.right.top.bottom.equalTo(view)
+//            }
             
             let label=UILabel()
             view.addSubview(label)

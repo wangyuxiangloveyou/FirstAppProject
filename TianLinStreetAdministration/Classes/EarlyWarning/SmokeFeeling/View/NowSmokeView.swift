@@ -13,17 +13,19 @@ class NowSmokeView: UIView {
     var nowCellclourse:IngreJumpClosure?
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+        tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        tableView?.dataSource=self
+        tableView?.delegate=self
+        self.addSubview(tableView!)
+        
         configUI()
-        //self.backgroundColor=UIColor.white
+       
     }
     
     func configUI()  {
         //创建表格试图
-       tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
-        tableView?.dataSource=self
-        tableView?.delegate=self
-         tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
-        self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView?.register(UINib(nibName: "NowSmokeCell",bundle: nil), forCellReuseIdentifier: "NowSmokeCellId")

@@ -14,7 +14,6 @@ class ServiceViewDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title="为老服务"
-    
         configUI()
     }
     

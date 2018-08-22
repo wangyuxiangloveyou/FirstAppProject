@@ -17,10 +17,9 @@ class CompleteDoorView: UIView {
     var dataArray:[AnyObject]=[]
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //configUI()
+        
         loadData1()
-       //self.backgroundColor=UIColor.white
-    //self.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+      
     }
     
     func configUI()  {
@@ -28,7 +27,8 @@ class CompleteDoorView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-         tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+
+        
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none

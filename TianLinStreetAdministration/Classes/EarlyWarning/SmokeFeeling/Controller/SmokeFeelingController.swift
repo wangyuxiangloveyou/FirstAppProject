@@ -10,17 +10,20 @@ import UIKit
 import IQKeyboardManagerSwift
 import Alamofire
 import Speech
+import SnapKit
 
 class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDelegate, SFSpeechRecognizerDelegate {
     
+    var bottomConstraint: ConstraintMakerEditable? = nil
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "zh_CN"))  //1
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var  unResultType = 0
     var segCtrl:KtcSegCtrl?
-     let sayBtn=UIButton()
+    let sayBtn=UIButton()
     //滚动视图
+    let labelButtom=UILabel()
     public var scrollView:UIScrollView?
     var firstView:SmokeFeelingView?
     var secondView:NowSmokeView?
@@ -37,11 +40,11 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
     let imageView1=UIImageView()
     let addressLabel=UILabel()
     var dataSource1:eventsModel?
+    let labelline2=UIView()
     
-   
-    override func viewDidAppear(_ animated: Bool) {
-        firstView?.startRefreshData()
-    }
+//        override func viewDidAppear(_ animated: Bool) {
+//            firstView?.startRefreshData1()
+//        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +77,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         
         
         
-        self.view.backgroundColor=UIColor.white
+        view.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         self.title="烟感"
         view1.isUserInteractionEnabled = true
         view.isUserInteractionEnabled=true
@@ -89,21 +92,17 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         
         secondView?.nowCellclourse = {
             (dataSoure) in
-            //self.scrollView?.contentOffset.x=(self.scrollView?.bounds.size.width)!
+            
             self.configUI1()
         }
     }
     
-//    func refreshWithDataSource(historyInfo:HistoryInfo)
-//    {
-//        self.historyInfo = historyInfo
-//        //self.tableView?.reloadData()
-//    }
+    
     
     //烟感事件处理进度上报
     func loadData1()
     {
-       
+        
         let parameters: Parameters = [
             "head":[
                 "platform":"app",
@@ -119,7 +118,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         ]
         print(parameters)
         Alamofire.request("http://47.75.190.168:5000/api/app/smokeDetectorProcessReport", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
-           // print(token1)
+            // print(token1)
             if let dic = response.result.value {
                 print("烟感事件处理进度上报")
                 let data : NSData! = try! JSONSerialization.data(withJSONObject: dic, options: []) as NSData?
@@ -136,7 +135,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
     }
     
     
-   // @available(iOS 10.0, *)
+    @available(iOS 10.0, *)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if let scheme = URL.scheme{
             switch scheme {
@@ -162,7 +161,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func configUI1() {
+    func configUI1()
+    {
         allTextView.isHidden=false
         self.segCtrl?.selectIndex=1
         self.scrollView?.contentOffset.x=(self.scrollView?.bounds.size.width)!
@@ -173,15 +173,14 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         view1.backgroundColor=UIColor.white
         self.secondView?.addSubview(self.view1)
         self.view1.snp.makeConstraints { (make) in
-            make.width.equalTo(screenWidth-6)
-            make.height.equalTo(screenHeight-270)
-            make.top.equalTo(self.secondView!).offset(0)
-            make.left.equalTo(self.secondView!).offset(3)
+            make.top.equalTo(self.secondView!)
+            make.left.equalTo(self.secondView!)
+            make.right.equalTo(self.secondView!)
         }
+        
         view1.layer.shadowOpacity = 0.3
         view1.layer.shadowColor = UIColor.black.cgColor
         view1.layer.shadowOffset = CGSize(width: 0, height: 3)
-        //view1.backgroundColor=UIColor.white
         
         self.view1.addSubview(imageView1)
         imageView1.image=UIImage(named: "居民楼-黑.png")
@@ -203,14 +202,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         }
         
         self.view1.addSubview(self.nameLabel)
-//        for i in 0 ..< self.dataSource1?.people?.count{
-//            if self.dataSource1?.people?[i].phone != ""{
-//                nameLabel.text = self.dataSource1?.people?[i].name+self.dataSource1?.people?[i].phone
-//            }
-//        }
-       // self.dataSource1?.people?.first?.phone
-//      nameLabel.dataDetectorTypes = UIDataDetectorTypes.phoneNumber
-        //nameLabel.text = self.dataSource1?.people?.first?.name
+        nameLabel.dataDetectorTypes = UIDataDetectorTypes.phoneNumber
+        
         nameLabel.font = UIFont.systemFont(ofSize: 15)
         nameLabel.isEditable=false
         nameLabel.delegate=self
@@ -218,22 +211,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
             for i in 0..<self.dataSource1!.people!.count{
                 if self.dataSource1!.people![i].relation == 1{
                 }
-                self.nameLabel.text=self.nameLabel.text+self.dataSource1!.people![i].name!+"  "+"\(self.dataSource1!.people![i].phone!)\n "
+                self.nameLabel.text = self.nameLabel.text+self.dataSource1!.people![i].name!+"  "+"\(self.dataSource1!.people![i].phone!)\n"
             }
-        }
-//       self.nameLabel.text="户主：张玲玲     13648273948\n            陈晓成     17263746464\n            陈晓成     17263746464\n            王吉安     13648273948"
-        // nameLabel.text="18701813730  18701813730"
-//        if self.dataSource1?.people?.first?.relation == 1{
-//            nameLabel.text=self.dataSource1?.people?.first?.name
-//            print(self.dataSource1?.people?.first?.name)
-//        }
-        if self.dataSource1?.people?.first?.relation == 0 && (self.dataSource1?.people?.count)!>0{
-            let formattor = NumberFormatter()
-            formattor.numberStyle = .decimal
-            let str = formattor.string(from: (self.dataSource1?.people?.first?.phone)!)
-           // self.nameLabel.text=(self.dataSource1?.people?.first?.name)!  +  str! + "\n  18701813730"
-            
-            print((self.dataSource1?.people?.first?.name)!+str!)
         }
        
         self.nameLabel.snp.makeConstraints { (make) in
@@ -273,6 +252,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
             make.height.equalTo(60)
             make.left.equalTo(self.btn1.snp.right).offset(0)
             make.top.equalTo(self.nameLabel.snp.bottom).offset(0)
+            self.bottomConstraint = make.bottom.equalTo(self.view1.snp.bottom)
         }
         
         self.secondView?.addSubview(commonBtn)
@@ -338,19 +318,12 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         }else{
             badgeLayer.string="\(smokeRed)"
         }
-        
-        
-//        let badgeLayer2=CATextLayer.createTextLayer()
-//        segCtrl?.layer.addSublayer(badgeLayer2)
-//        badgeLayer2.frame=CGRect(x: screenWidth/3*2-20, y: 45, width: 18, height: 18)
-//        badgeLayer2.cornerRadius=9
-//        badgeLayer.fontSize=16
-//        badgeLayer2.string="1"
     }
     
     func btn1Click(btn1:UIButton)  {
         unResultType=1
         print(unResultType)
+        
         if btn1.isSelected  == false {
             btn1.setImage(UIImage(named: "Check box"), for: .normal)
             btn2.setImage(UIImage(named: "checkbox_off_light"), for: .normal)
@@ -382,7 +355,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
                 make.top.equalTo(allLabel.snp.bottom).offset(-3)
             }
             
-           
+            
             view1.addSubview(sayBtn)
             sayBtn.setImage(UIImage(named: "Voice.png"), for: .normal)
             sayBtn.addTarget(self, action: #selector(sayClick), for: .touchDown)
@@ -393,7 +366,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
                 make.height.equalTo(30)
             }
             
-            let labelline2=UIView()
+            
             view1.addSubview(labelline2)
             labelline2.backgroundColor=UIColor.init(red: 0/255, green: 150/255, blue: 136/255, alpha: 1)
             labelline2.snp.makeConstraints { (make) in
@@ -403,7 +376,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
                 make.height.equalTo(1)
             }
             
-            let labelButtom=UILabel()
+            self.bottomConstraint?.constraint.deactivate()
+            
             view1.addSubview(labelButtom)
             labelButtom.text="110/120"
             labelButtom.font=UIFont.systemFont(ofSize: 15)
@@ -412,6 +386,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
                 make.width.equalTo(60)
                 make.right.equalTo(view1.snp.right).offset(-3)
                 make.height.equalTo(30)
+                make.bottom.equalTo(view1.snp.bottom)
             }
         }
     }
@@ -503,11 +478,16 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
     func btn2Click(btn2:UIButton)  {
         unResultType=2
         print(unResultType)
-        if btn2.isSelected  == false {
+        
+        self.bottomConstraint?.constraint.activate()
+        if btn2.isSelected  == false
+        {
             btn2.setImage(UIImage(named: "Check box"), for: .normal)
             btn1.setImage(UIImage(named: "checkbox_off_light"), for: .normal)
             allLabel.removeFromSuperview()
             allTextView.removeFromSuperview()
+            labelline2.removeFromSuperview()
+            labelButtom.removeFromSuperview()                   
         }
     }
     
@@ -523,8 +503,8 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
             "resultType":unResultType,
             "result":allTextView.text
         ]
-//
-       print(parameters)
+        //
+        print(parameters)
         print(unResultType)
         commonBtn.removeFromSuperview()
         let vc = pictureController()
@@ -546,7 +526,7 @@ class SmokeFeelingController: UIViewController,UITextViewDelegate,UITextFieldDel
         view.addSubview(scrollView!)
         //约束
         scrollView!.snp.makeConstraints { (make) in
-             make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(114+navigationBarHeight-44, 0, 0, 0))
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(114+navigationBarHeight-44, 0, 0, 0))
         }
         //容器视图
         let containerView=UIView.createView()
@@ -602,18 +582,18 @@ extension SmokeFeelingController:KtcSegCtrlDelegate{
     func segCtrl(segCtrl: KtcSegCtrl, didClickBtnIndex index: Int) {
         scrollView?.setContentOffset(CGPoint(x: CGFloat(index)*screenWidth, y: 0), animated: true)
         if segCtrl.selectIndex == 0{
-             firstView?.startRefreshData()
+            firstView?.startRefreshData1()
             self.nameLabel.removeFromSuperview()
             commonBtn.removeFromSuperview()
             self.view1.removeFromSuperview()
-           self.allTextView.resignFirstResponder()
+            self.allTextView.resignFirstResponder()
             allTextView.isHidden=true
             allLabel.removeFromSuperview()
         }
         if segCtrl.selectIndex == 2{
             ThreeView?.startRefreshData1()
         }
-       
+        
         if segCtrl.selectIndex != 1{
             secondView?.tableView?.isHidden=false
             self.nameLabel.removeFromSuperview()
@@ -633,7 +613,7 @@ extension SmokeFeelingController:UIScrollViewDelegate{
         let index=scrollView.contentOffset.x/scrollView.bounds.size.width
         segCtrl?.selectIndex=Int(index)
         if segCtrl?.selectIndex == 0{
-           firstView?.startRefreshData()
+            firstView?.startRefreshData1()
         }
         
         if segCtrl?.selectIndex == 2{

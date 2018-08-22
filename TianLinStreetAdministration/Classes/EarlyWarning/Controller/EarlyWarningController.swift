@@ -20,21 +20,28 @@ class EarlyWarningController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor=UIColor.white
-        view.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        
+        //创建一个用于显示背景图片的imageView
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "mmexport1525609772323.jpg")
+        backgroundImage.contentMode = .scaleAspectFill //等比缩放填充（图片可能有部分显示不全）
+        //将背景图片imageView插入到当前视图中
+        view.insertSubview(backgroundImage, at: 0)
+        
+        // self.view.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //view.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         //        navigationController?.navigationBar.backgroundColor = UIColor.init(red: 24/255, green: 55/255, blue: 191/255, alpha: 1)
+        
+        
         navigationController?.navigationBar.barTintColor = UIColor.init(red: 31/255, green: 80/255, blue: 203/255, alpha: 1)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+       // self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         self.navigationItem.hidesBackButton = false
         
         let backItem:UIBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backItem
-        UINavigationBar.appearance().tintColor = UIColor.white
+       // UINavigationBar.appearance().tintColor = UIColor.white
         self.title=villageName
-        // let newView = Bundle.main.loadNibNamed("EarlyWarningView", owner: nil, options: nil)?.first as? EarlyWarningView
-        // newView?.frame = CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-64)
-        //self.view.addSubview(newView!)
-        
         loadData1()
         
     }
@@ -50,7 +57,7 @@ class EarlyWarningController: UIViewController,UITableViewDelegate,UITableViewDa
                 "longitude":longitude,
                 "latitude":latitude,
             ],
-             "villageIDs":villageArray
+            "villageIDs":villageArray
         ]
         print(parameters)
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -89,7 +96,7 @@ class EarlyWarningController: UIViewController,UITableViewDelegate,UITableViewDa
         tableView?.dataSource=self
         tableView?.delegate=self
         self.view.addSubview(tableView!)
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        tableView?.backgroundColor=UIColor.clear
         self.tableView?.isScrollEnabled = false
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView?.register(UINib(nibName: "EarlyWarningTableViewCell",bundle: nil), forCellReuseIdentifier: "EarlyWarningTableViewCellId")

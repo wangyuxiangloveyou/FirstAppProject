@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Alamofire
 
-
-
 class DrugAddictsDetailsViewController: UIViewController {
     var tableView:UITableView?
     var dataSource:[[AnyObject]]=[]
@@ -244,7 +242,6 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
             
             return cell
         }
-        
         return UITableViewCell()
     }
     
@@ -267,12 +264,10 @@ extension DrugAddictsDetailsViewController:UITableViewDelegate,UITableViewDataSo
             let more = UITableViewRowAction(style: .normal, title: "标记\n可疑") {
                 action, index in
                 
-                let model:NewModel=self.dataSource1[indexPath.section] as! NewModel
+                let model:alarmsDetailsModel=self.dataSource1[indexPath.section] as! alarmsDetailsModel
                 self.idName=model.alarmID!
                 print(self.idName)
                 self.loadData1()
-                
-                
             }
             
             more.backgroundColor = UIColor.orange

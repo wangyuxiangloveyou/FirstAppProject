@@ -21,7 +21,6 @@ class UntreatedDoorModel: NSObject {
     public var events : [UntreatedDoorEventsModel]?
     public var prodcutName:String?
     var responseStatus:UntreatedDoorStatusModel?
-    
 //    override func mj_keyValuesDidFinishConvertingToObject() {
 //        self.events = UntreatedDoorEventsModel.mj_objectArray(withKeyValuesArray: self.events).copy() as? [UntreatedDoorEventsModel]
 //    }

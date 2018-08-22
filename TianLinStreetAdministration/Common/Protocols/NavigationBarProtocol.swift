@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Foundation
 import UIKit
 
 enum BarButtonPosition {
@@ -29,7 +28,6 @@ extension navigationprotocol where Self:UIViewController{
         label.text = title
         navigationItem.titleView=label
         navigationController?.navigationBar.backgroundColor=UIColor.blue
-//      navigationController?.navigationBar.setBackgroundImage(UIImage(named:"top-bg.png"), forBarMetrics: .Default)
     }
     
     func addBarButton(title:String?=nil,bgImageName:String?,postion:BarButtonPosition,select:Selector){
@@ -58,6 +56,7 @@ extension navigationprotocol where Self:UIViewController{
                 
             }else{
                 navigationItem.rightBarButtonItems=[tabBUttonItem]
+                
             }
         }
     }

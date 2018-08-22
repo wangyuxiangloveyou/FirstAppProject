@@ -30,18 +30,11 @@ class NowDoorView: UIView {
         let ud = UserDefaults.standard
         let firstLaunch:Bool = ud.bool(forKey: "Launched");
         if(!firstLaunch){
-            //第一次启动
-//            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-//                //执行的代码
-//                self.tickDown()
-//            }
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tickDown), userInfo: nil, repeats: true)
         }else{
             ud.setValue(true, forKey: "Launched")
             ud.synchronize()
         }
-        
-        //       dataMutable.append("00:0\(leftTimMin):\(leftTime)")
         
         print(dataMutable)
         
@@ -72,7 +65,14 @@ class NowDoorView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+//        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        //创建一个用于显示背景图片的imageView
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "mmexport1525609772323.jpg")
+        backgroundImage.contentMode = .scaleAspectFill //等比缩放填充（图片可能有部分显示不全）
+        //将背景图片imageView插入到当前视图中
+        tableView?.insertSubview(backgroundImage, at: 0)
+        
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none

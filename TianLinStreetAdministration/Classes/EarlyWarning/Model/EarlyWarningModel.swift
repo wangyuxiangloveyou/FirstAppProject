@@ -32,9 +32,8 @@ class warningEventsModel: NSObject {
     var name:String?
     var unsolveNum:NSNumber?
     var solveNum:NSNumber?
-   
-    
 }
+
 class warningModel: NSObject {
     var resultCode:NSNumber?
     var resultMessage:String?

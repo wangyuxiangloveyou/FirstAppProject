@@ -28,9 +28,39 @@ class CompleteSmokeCell: UITableViewCell {
         self.bkgView.layer.shadowColor = UIColor.black.cgColor;
         self.bkgView.layer.shadowOpacity = 0.3;
         self.bkgView.layer.shadowOffset = CGSize(width: 0, height: 3)
+         self.selectionStyle = .none
     }
     
     func refreshData(model:CompleteSmokeEventsModel)  {
+        FirstmageView.image=UIImage(named: "居民楼-黑.png")
+        if model.villageName != nil && model.buildingNo != nil && model.houseNo != nil{
+            let str = model.villageName!+"-"+"\(model.buildingNo!)"+"栋-"+"\(model.houseNo!)"
+            AdressLabel.text=str
+        }
+        
+        AdressLabel.textColor=UIColor.init(red: 0/255, green: 123/255, blue: 195/255, alpha: 1)
+        TimeLongLabel.textAlignment = .center
+        Person.text="共"+"\(model.residentNum!)"+"人"
+        if model.people!.count>0{
+            for i in 0..<model.people!.count{
+                if model.people?[i].relation != nil{
+                if Int((model.people?[i].relation)!) == 1{
+                    NameLabel.text="业主:" + (model.people?[i].name)!
+                }
+                }
+            }
+        }
+        if model.createTime != nil{
+            TimeLabel.text=model.createTime
+        }
+        AllLabel.text="具体内容"
+        if model.resultContent != nil{
+            AllLabel.textColor=UIColor.lightGray
+            AllLabel.font=UIFont.systemFont(ofSize: 12)
+            AllLabel1.text=model.resultContent!
+            AllLabel1.numberOfLines=0
+            AllLabel1.font=UIFont.systemFont(ofSize: 12)
+        }
         if (model.resultType.count) > 0
         {
             for i in 0..<model.resultType.count

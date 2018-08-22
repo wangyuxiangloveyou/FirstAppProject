@@ -5,14 +5,23 @@
     //  Created by wangyuxiang on 2018/6/4.
     //  Copyright © 2018年 TianLinStreetAdministration. All rights reserved.
     //
-
+    
     import UIKit
     import Alamofire
     import SnapKit
+    import  MJRefresh
     public var unID=""
-
+    
     public var jump=0
     class UntreatedDoorView: UIView {
+        
+        var shouldLoadMoreData = true
+        var index = 1
+        // 顶部刷新
+        let header = MJRefreshNormalHeader()
+        // 底部刷新
+        let footer = MJRefreshAutoNormalFooter()
+        var pageNum=0
         var tableView:UITableView?
         var doorCellClourse:OperationSelected?
         var repairCellClourse:OperationSelected?
@@ -21,35 +30,78 @@
         var picClource:IngreJumpClosure?
         override init(frame: CGRect) {
             super.init(frame: frame)
-            configUI()
             loadData1()
-            print(mutableID)
-            //self.backgroundColor=UIColor.white
-            // self.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+            self.backgroundColor=UIColor.white
+            tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+            self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+            tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+            self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+            self.tableView?.isScrollEnabled = true
+            self.addSubview(tableView!)
         }
         
         
         func configUI()  {
             //创建表格试图
-            tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+            
             tableView?.dataSource=self
             tableView?.delegate=self
-            tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
-            self.addSubview(tableView!)
             self.tableView?.isScrollEnabled = true
-            self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+            
             //tableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
             //tableView?.allowsSelection = false
             tableView?.register(UINib(nibName: "UntreatedDoorCell",bundle: nil), forCellReuseIdentifier: "UntreatedDoorCellId")
             if #available(iOS 11.0, *) {
-                
                 tableView?.contentInsetAdjustmentBehavior = .never
                 
             } else {
-                
                 //self.automaticallyAdjustsScrollViewInsets = false
             }
+            
+            // 下拉刷新
+            header.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.headerRefresh))
+            // 现在的版本要用mj_header
+            tableView?.mj_header = header
+            header.setTitle("", for: .idle)
+            header.setTitle("释放更新", for: .pulling)
+            header.setTitle("正在刷新...", for: .refreshing)
+            // 上拉加载
+            footer.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.footerRefresh))
+            tableView?.mj_footer = footer
+            footer.setTitle("", for: .idle)
+            footer.setTitle("释放加载", for: .pulling)
+            footer.setTitle("正在加载...", for: .refreshing)
+            footer.setTitle("没有更多数据", for: .noMoreData)
         }
+        //顶部刷新
+        func headerRefresh(){
+            print("下拉刷新")
+            // 结束刷新
+            // self.tableView?.mj_header.beginRefreshing()
+            index=1
+            loadData1()
+        }
+        
+        // 底部刷新
+        
+        func footerRefresh()
+        {
+            index = index + 1
+            //        self.tableView?.mj_footer.beginRefreshing()
+            if shouldLoadMoreData {
+                loadData1()
+            } else {
+                self.tableView!.mj_footer.endRefreshingWithNoMoreData()
+            }
+        }
+        
+        func startRefreshData1()
+        {
+            self.tableView?.mj_header.beginRefreshing()
+            index = 1
+            loadData1()
+        }
+        
         
         //获取门禁未完成事件列表
         func loadData1()
@@ -64,8 +116,8 @@
                 ],
                 "villageIDs":villageArray,
                 "status":0,
-                "pageNum":1,
-                "pageSize":1000,
+                "pageNum":index,
+                "pageSize":20,
                 ]
             Alamofire.request("http://47.75.190.168:5000/api/app/getAccessEventList", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
                 print("获取门禁未完成事件列表")
@@ -88,15 +140,34 @@
                                 }
                             }
                         }
-                        self.dataArray=model1.events!
-                        print(model1.events!.count)
+                        let c =  model1.events!.count
+                        self.shouldLoadMoreData = c >= 20
+                        if c>0
+                        {
+                            if self.index > 1
+                            {
+                                for i in 0..<c
+                                {
+                                    self.dataArray.append(model1.events![i])
+                                }
+                            }
+                            else if self.index == 1
+                            {
+                                self.dataArray = model1.events!
+                            }
+                        }
                     }
                 }
                 else
                 {
                     print("dic: \(response)")
                 }
+                // 结束刷新
                 self.tableView?.reloadData()
+                self.configUI()
+                self.tableView?.mj_header.endRefreshing()
+                self.tableView?.mj_footer.endRefreshing()
+                
             }
         }
         
@@ -104,9 +175,9 @@
             fatalError("init(coder:) has not been implemented")
         }
     }
-
-
-
+    
+    
+    
     extension UntreatedDoorView:UITableViewDelegate,UITableViewDataSource
     {
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -148,27 +219,16 @@
             print(model.key)
             print(self.dataArray)
             if model.status == 1{
-    //            if picClource != nil{
-    //                self.picClource!()
-    //            }
-                           jump=1
-                            cell.ReceiptButton.isHidden=true
-                           cell.HandleButton.snp.makeConstraints { (make) in
-                                make.top.equalTo(cell.AdressLabel.snp.bottom).offset(10)
-                                make.left.equalTo(self).offset(3)
-                                make.width.equalTo(screenWidth-6)
-                            }
+                
+                jump=1
+                cell.ReceiptButton.isHidden=true
+                cell.HandleButton.snp.makeConstraints { (make) in
+                    make.top.equalTo(cell.AdressLabel.snp.bottom).offset(10)
+                    make.left.equalTo(self).offset(3)
+                    make.width.equalTo(screenWidth-6)
+                }
             }
-            //        if  self.mutableID.count > 0{
-            //            if model.eventID == self.mutableID[indexPath.row] {
-            //            cell.ReceiptButton.isHidden=true
-            //           cell.HandleButton.snp.makeConstraints { (make) in
-            //                make.top.equalTo(cell.AdressLabel.snp.bottom).offset(10)
-            //                make.left.equalTo(self).offset(3)
-            //                make.width.equalTo(screenWidth-6)
-            //            }
-            //            }
-            //        }
+            
             cell.HandleButton.tintColor=UIColor.white
             cell.HandleButton.backgroundColor=UIColor.init(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
             

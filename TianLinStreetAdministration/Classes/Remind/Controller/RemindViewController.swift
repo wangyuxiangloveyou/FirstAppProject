@@ -19,6 +19,10 @@ class RemindViewController: UIViewController {
     var dataClourse:OperationSelected?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.additionalSafeAreaInsets = UIEdgeInsetsMake(10, 0, 0, 34)
+        }
         view.backgroundColor=UIColor.white
         view.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.title="提醒"
@@ -64,8 +68,6 @@ class RemindViewController: UIViewController {
             let vc=ControlViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-        
     }
     
     func creatNav(){
@@ -112,14 +114,12 @@ class RemindViewController: UIViewController {
         
         //2.secondView视图
         secondView = CompleteView()
-        
         containerView.addSubview(secondView!)
         secondView?.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(containerView)
             make.width.equalTo(screenWidth)
             make.left.equalTo((firstView?.snp.right)!)
         })
-        
         
         //修改容器视图大小
         containerView.snp.makeConstraints { (make) in

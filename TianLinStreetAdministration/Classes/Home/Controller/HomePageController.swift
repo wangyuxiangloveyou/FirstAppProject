@@ -10,18 +10,6 @@ import UIKit
 import Alamofire
 import MBProgressHUD
 
-public var villageID:String=""
-public var villageName:String=""
-public var villageArray:[AnyObject]=[]
-public var name:String=""
-public var homeNumber1:NSNumber=0
-public var homeNumber2:NSNumber=0
-public var homeNumber3:NSNumber=0
-public var homeNumber4:NSNumber=0
-public var blockName2:String=""
-public var blockName3:String=""
-public var blockName4:String=""
-public typealias IngreJumpClosure = ((Void) -> Void)
 
 class HomePageController: UIViewController {
     
@@ -114,7 +102,15 @@ class HomePageController: UIViewController {
     }
     
     func configUI(){
-        view.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        
+        let backImage=UIImageView()
+        backImage.image=UIImage(named: "mmexport1525609772323.jpg")
+        view.addSubview(backImage)
+        backImage.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(view)
+        }
+        
+       // view.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         view.addSubview(label)
         label.text=name
         label.numberOfLines=0

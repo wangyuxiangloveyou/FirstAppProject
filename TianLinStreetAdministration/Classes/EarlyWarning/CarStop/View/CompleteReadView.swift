@@ -29,7 +29,14 @@ class CompleteReadView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: navigationBarHeight-44, width:screenWidth , height: screenHeight+navigationBarHeight-160), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-         tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+         //tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        //创建一个用于显示背景图片的imageView
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "mmexport1525609772323.jpg")
+        backgroundImage.contentMode = .scaleAspectFill //等比缩放填充（图片可能有部分显示不全）
+        //将背景图片imageView插入到当前视图中
+        tableView?.insertSubview(backgroundImage, at: 0)
+        
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none

@@ -10,6 +10,23 @@ import Foundation
 import UIKit
 
 
+public var unDrugDataArray1:[AnyObject]=[]
+public var villageID:String=""
+public var villageName:String=""
+public var villageArray:[AnyObject]=[]
+public var name:String=""
+public var homeNumber1:NSNumber=0
+public var homeNumber2:NSNumber=0
+public var homeNumber3:NSNumber=0
+public var homeNumber4:NSNumber=0
+public var blockName2:String=""
+public var blockName3:String=""
+public var blockName4:String=""
+public typealias IngreJumpClosure = ((Void) -> Void)
+
+public var strLoginname:String=""
+public var token1:String=""
+public var strPassword:String=""
 let screenHeight=UIScreen.main.bounds.height
 let screenWidth=UIScreen.main.bounds.width
 let isIphoneX = screenHeight == 812 ? true : false
