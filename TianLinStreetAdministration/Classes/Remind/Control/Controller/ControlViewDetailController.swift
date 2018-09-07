@@ -79,7 +79,7 @@ extension ControlViewDetailController:UITableViewDelegate,UITableViewDataSource
             moneyTitle.addAttribute(NSFontAttributeName, value:UIFont.systemFont(ofSize:18), range:NSRange.init(location:9, length: 3))
             cell.nameLabel.attributedText = moneyTitle
             cell.peopleLabel.text="徐健坤"
-            cell.timeLabel.text="记录访客:   09:23:23   12:23:24   16:23:09\n                  20:45:23"
+           // cell.timeLabel.text="记录访客:   09:23:23   12:23:24   16:23:09\n                  20:45:23"
             return cell
         }
         if indexPath.row == 2{
@@ -94,7 +94,7 @@ extension ControlViewDetailController:UITableViewDelegate,UITableViewDataSource
             moneyTitle.addAttribute(NSFontAttributeName, value:UIFont.systemFont(ofSize:18), range:NSRange.init(location:9, length: 3))
             cell.nameLabel.attributedText = moneyTitle
             cell.peopleLabel.text="徐健坤"
-            cell.timeLabel.text="记录访客:   09:23:23   12:23:24   16:23:09\n                  20:45:23"
+            //cell.timeLabel.text="记录访客:   09:23:23   12:23:24   16:23:09\n                  20:45:23"
             return cell
         }
         return UITableViewCell()
@@ -102,48 +102,48 @@ extension ControlViewDetailController:UITableViewDelegate,UITableViewDataSource
     
     
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
-        if indexPath.row == 0 {
-            return false
-        }else{
-            return true
-        }
-    }
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+//        if indexPath.row == 0 {
+//            return false
+//        }else{
+//            return true
+//        }
+//    }
     
     
-    //返回每一个行对应的事件按钮
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath)
-        -> [UITableViewRowAction]? {
-            
-            //创建“更多”事件按钮
-            let more = UITableViewRowAction(style: .normal, title: "更多") {
-                action, index in
-                // UIAlertController.showAlert(message: "点击了“更多”按钮")
-                let cell:DrugAddictsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "DrugAddictsDetailsCellId", for: indexPath as IndexPath) as! DrugAddictsDetailsCell
-                cell.suspiciousLabel.text="可疑"
-                cell.suspiciousLabel.backgroundColor=UIColor.init(red: 0/255, green: 123/255, blue: 195/255, alpha: 1)
-                
-            }
-            more.backgroundColor = UIColor.lightGray
-            
-            //创建“旗标”事件按钮
-            let favorite = UITableViewRowAction(style: .normal, title: "标记\n可疑") {
-                action, index in
-                // UIAlertController.showAlert(message: "点击了“旗标”按钮")
-            }
-            favorite.backgroundColor = UIColor.orange
-            
-            //创建“删除”事件按钮
-            let delete = UITableViewRowAction(style: .normal, title: "删除") {
-                action, index in
-                //将对应条目的数据删除
-                //self.items.remove(at: index.row)
-                //tableView.reloadData()
-            }
-            delete.backgroundColor = UIColor.red
-            //返回所有的事件按钮
-            return [delete, favorite, more]
-    }
+//    //返回每一个行对应的事件按钮
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath)
+//        -> [UITableViewRowAction]? {
+//
+//            //创建“更多”事件按钮
+//            let more = UITableViewRowAction(style: .normal, title: "更多") {
+//                action, index in
+//                // UIAlertController.showAlert(message: "点击了“更多”按钮")
+//                let cell:DrugAddictsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "DrugAddictsDetailsCellId", for: indexPath as IndexPath) as! DrugAddictsDetailsCell
+//                cell.suspiciousLabel.text="可疑"
+//                cell.suspiciousLabel.backgroundColor=UIColor.init(red: 0/255, green: 123/255, blue: 195/255, alpha: 1)
+//
+//            }
+//            more.backgroundColor = UIColor.lightGray
+//
+//            //创建“旗标”事件按钮
+//            let favorite = UITableViewRowAction(style: .normal, title: "标记\n可疑") {
+//                action, index in
+//                // UIAlertController.showAlert(message: "点击了“旗标”按钮")
+//            }
+//            favorite.backgroundColor = UIColor.orange
+//
+//            //创建“删除”事件按钮
+//            let delete = UITableViewRowAction(style: .normal, title: "删除") {
+//                action, index in
+//                //将对应条目的数据删除
+//                //self.items.remove(at: index.row)
+//                //tableView.reloadData()
+//            }
+//            delete.backgroundColor = UIColor.red
+//            //返回所有的事件按钮
+//            return [delete, favorite, more]
+//    }
 }
 
 

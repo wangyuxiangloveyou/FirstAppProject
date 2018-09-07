@@ -40,7 +40,8 @@ class ComDrugAddictsView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-100), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = false
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -85,6 +86,7 @@ extension ComDrugAddictsView:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.cellClourseONE != nil{
             let model:modelsModel=unDrugDataArray1[indexPath.row] as! modelsModel
+            comDrugAddictName=model.modelName!
             name1=model.modelID!
             name2=1
             self.cellClourseONE!()

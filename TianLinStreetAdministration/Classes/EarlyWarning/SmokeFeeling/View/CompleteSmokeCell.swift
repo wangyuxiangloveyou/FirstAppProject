@@ -77,6 +77,7 @@ class CompleteSmokeCell: UITableViewCell {
                     ErrorLabel.textAlignment = .center
                     ErrorLabel.textColor=UIColor.white
                    
+                    
                     layer1.frame=CGRect(x: 20, y: 8, width: 80, height:35)
                     layer1.string="非误报"
                     layer1.foregroundColor=UIColor.white.cgColor

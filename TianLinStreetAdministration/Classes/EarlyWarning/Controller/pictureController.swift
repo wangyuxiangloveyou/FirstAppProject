@@ -13,8 +13,9 @@ class pictureController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor=UIColor.white
-        view?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+        //self.view.backgroundColor=UIColor.white
+        self.view?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //view?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         let imageView1=UIImageView()
         
         view.addSubview(imageView1)

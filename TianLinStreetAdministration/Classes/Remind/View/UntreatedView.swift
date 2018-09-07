@@ -21,7 +21,8 @@ class UntreatedView: UIView {
         loadData1()
         //hloadData2()
         //loadData3()
-        self.backgroundColor=UIColor.white
+        //self.backgroundColor=UIColor.white
+        self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
     }
     
     
@@ -109,7 +110,8 @@ class UntreatedView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-100), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+       // tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = false
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none

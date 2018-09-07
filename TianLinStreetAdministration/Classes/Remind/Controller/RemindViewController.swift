@@ -72,7 +72,7 @@ class RemindViewController: UIViewController {
     
     func creatNav(){
         //选择控件
-        let frame=CGRect(x: 0, y: 20, width: screenWidth, height: 95)
+       let frame=CGRect(x: 0, y: navigationBarHeight-24, width: screenWidth, height: 95)
         segCtrl=KtcSegCtrl(frame: frame, titleArray: ["未读","已读"])
         segCtrl?.delegate=self
         segCtrl?.backgroundColor = UIColor.white
@@ -94,7 +94,8 @@ class RemindViewController: UIViewController {
         view.addSubview(scrollView!)
         //约束
         scrollView!.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(114, 0, 0, 0))
+             make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(114+navigationBarHeight-44, 0, 0, 0))
+           // make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(114, 0, 0, 0))
         }
         //容器视图
         let containerView=UIView.createView()

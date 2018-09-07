@@ -5,27 +5,29 @@
 //  Created by wangyuxiang on 2018/6/4.
 //  Copyright © 2018年 TianLinStreetAdministration. All rights reserved.
 //
-
 import UIKit
 import IQKeyboardManagerSwift
 import Alamofire
 import Speech
-import MBProgressHUD
+import SnapKit
 import Toast_Swift
+import MBProgressHUD
     
 public var number1=0
 public var dataArry1:NSMutableArray=[]
 public var dataArryID:[String]=[]
 public var localTime=0
-class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
+class DoorNoCloseController: UIViewController,UITextViewDelegate,UITextFieldDelegate, SFSpeechRecognizerDelegate {
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "zh_CN"))  //1
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var segCtrl:KtcSegCtrl?
+    
+    var bottomConstraint:ConstraintMakerEditable? = nil
     var sceneType = 1
     //滚动视图
-    
+   // var bottomConstraint:ConstraintMakerEditable? = nil
     var timer1:Timer?
      var  unResultType = 1
     let  timeLabel=UILabel()
@@ -90,7 +92,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
             //OperationQueue.main.addOperation() {self.sayBtn.isEnabled = isButtonEnabled
             self.sayBtn1.isEnabled = isButtonEnabled
             self.sayBtn2.isEnabled = isButtonEnabled
-            //   }
+            //  }
         }
         
         
@@ -227,28 +229,28 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
         }
     }
     
-    override func viewSafeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.viewSafeAreaInsetsDidChange()
-            NSLog("viewSafeAreaInsetsDidChange-%@",NSStringFromUIEdgeInsets(self.view.safeAreaInsets))
-        } else {
-            // Fallback on earlier versions
-        }
-        self.updateOrientation()
-    }
+//    override func viewSafeAreaInsetsDidChange() {
+//        if #available(iOS 11.0, *) {
+//            super.viewSafeAreaInsetsDidChange()
+//            NSLog("viewSafeAreaInsetsDidChange-%@",NSStringFromUIEdgeInsets(self.view.safeAreaInsets))
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//        self.updateOrientation()
+//    }
     /**
      更新屏幕safearea frame
      */
-    func updateOrientation()
-    {
-        if #available(iOS 11.0, *) {
-            var frame = self.view.frame
-            frame.origin.x = self.view.safeAreaInsets.left
-            frame.size.width  = self.view.frame.size.width - self.view.safeAreaInsets.left - self.view.safeAreaInsets.right
-            frame.size.height = self.view.frame.size.height - self.view.safeAreaInsets.bottom
-            self.view.frame = frame
-        }
-    }
+//    func updateOrientation()
+//    {
+//        if #available(iOS 11.0, *) {
+//            var frame = self.view.frame
+//            frame.origin.x = self.view.safeAreaInsets.left
+//            frame.size.width  = self.view.frame.size.width - self.view.safeAreaInsets.left - self.view.safeAreaInsets.right
+//            frame.size.height = self.view.frame.size.height - self.view.safeAreaInsets.bottom
+//            self.view.frame = frame
+//        }
+//    }
     
     
     func tickDown()
@@ -336,10 +338,9 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
         view1.layer.shadowOffset = CGSize(width: 0, height: 3)
         
         self.view1.snp.makeConstraints { (make) in
-            make.width.equalTo(screenWidth)
-            make.height.equalTo(screenHeight-250)
-            make.right.left.equalTo(self.secondView!)
-            make.top.equalTo(self.secondView!).offset(0)
+            make.top.equalTo(self.secondView!)
+            make.left.equalTo(self.secondView!)
+            make.right.equalTo(self.secondView!)
         }
         
         self.view1.addSubview(imageView1)
@@ -347,6 +348,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
         imageView1.snp.makeConstraints { (make) in
             make.width.equalTo(30)
             make.height.equalTo(30)
+            make.left.equalTo(view1).offset(0)
             make.top.left.equalTo(self.view1).offset(5)
         }
         
@@ -413,7 +415,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
         
         view1.addSubview(allLabel2)
         allLabel2.text="备注"
-        allLabel2.textColor=UIColor.black
+        allLabel2.textColor=UIColor.lightGray
         allLabel2.font=UIFont.systemFont(ofSize: 15)
         allLabel2.snp.makeConstraints { (make) in
             make.width.equalTo(screenWidth/2)
@@ -429,7 +431,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
         allTextView2.font=UIFont.systemFont(ofSize: 15)
         allTextView2.snp.makeConstraints { (make) in
             make.width.equalTo(screenWidth-20)
-            make.height.equalTo(100)
+            make.height.equalTo(130)
             make.left.equalTo(view1).offset(10)
             make.top.equalTo(allLabel2.snp.bottom).offset(-3)
         }
@@ -463,6 +465,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
             make.width.equalTo(60)
             make.right.equalTo(view1.snp.right).offset(-3)
             make.height.equalTo(25)
+            self.bottomConstraint = make.bottom.equalTo(self.view1.snp.bottom)
         }
         
         
@@ -570,7 +573,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
             allTextView.font=UIFont.systemFont(ofSize: 18)
             allTextView.snp.makeConstraints { (make) in
                 make.width.equalTo(screenWidth-20)
-                make.height.equalTo(screenHeight/5)
+                make.height.equalTo(130)
                 make.left.equalTo(view1).offset(10)
                 make.top.equalTo(allLabel.snp.bottom).offset(-3)
             }
@@ -596,17 +599,20 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
                 make.height.equalTo(1)
             }
             
-            
             view1.addSubview(labelButtom1)
             labelButtom1.text="110/120"
+            self.bottomConstraint!.constraint.activate()
+            //self.bottomConstraint?.constraint.activate()
             labelButtom1.font=UIFont.systemFont(ofSize: 15)
             labelButtom1.snp.makeConstraints { (make) in
                 make.top.equalTo(labelline1.snp.bottom).offset(0)
                 make.width.equalTo(60)
                 make.right.equalTo(view1.snp.right).offset(-3)
                 make.height.equalTo(25)
+               // self.bottomConstraint = make.bottom.equalTo(view1.snp.bottom)
+                make.bottom.equalTo(view1.snp.bottom)
+                
             }
-            
         }
         
     }
@@ -751,7 +757,9 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
     
     func btn2Click(btn2:UIButton)  {
         unResultType=2
+        self.bottomConstraint?.constraint.activate()
         if btn2.isSelected  == false {
+            
             btn2.setImage(UIImage(named: "Check box"), for: .normal)
             btn1.setImage(UIImage(named: "checkbox_off_light"), for: .normal)
             
@@ -798,6 +806,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
     
     func speciaClick(speciaBtn:UIButton)  {
         sceneType=1
+        self.bottomConstraint?.constraint.activate()
         if speciaBtn.isSelected  == false {
             speciaBtn.setImage(UIImage(named: "radio_on_light"), for: .normal)
             noSpeciaBtn.setImage(UIImage(named: "radio_off_light"), for: .normal)
@@ -843,6 +852,7 @@ class DoorNoCloseController: UIViewController,SFSpeechRecognizerDelegate {
     
     func noSpeciaClick(noSpeciaBtn:UIButton)  {
         sceneType=2
+        self.bottomConstraint?.constraint.activate()
         if noSpeciaBtn.isSelected  == false {
             noSpeciaBtn.setImage(UIImage(named: "radio_on_light"), for: .normal)
             speciaBtn.setImage(UIImage(named: "radio_off_light"), for: .normal)
@@ -969,6 +979,13 @@ extension DoorNoCloseController:KtcSegCtrlDelegate{
             addressLabel.removeFromSuperview()
             imageView1.removeFromSuperview()
         }
+        if segCtrl.selectIndex == 0{
+            firstView?.startRefreshData1()
+        }
+        
+        if segCtrl.selectIndex == 2{
+            self.ThreeView?.startRefreshData1()
+        }
         
     }
 }
@@ -995,6 +1012,13 @@ extension DoorNoCloseController:UIScrollViewDelegate{
             timeLabel.removeFromSuperview()
             addressLabel.removeFromSuperview()
             imageView1.removeFromSuperview()
+        }
+        if segCtrl?.selectIndex == 0{
+            firstView?.startRefreshData1()
+        }
+        
+        if segCtrl?.selectIndex == 2{
+            self.ThreeView?.startRefreshData1()
         }
     }
 }

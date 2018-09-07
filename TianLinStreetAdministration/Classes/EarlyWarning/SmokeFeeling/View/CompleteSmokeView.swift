@@ -28,7 +28,7 @@ class CompleteSmokeView: UIView,RefreshProtocol{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView1=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+         tableView1=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
          self.tableView1?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
          self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         self.tableView1?.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -49,14 +49,14 @@ class CompleteSmokeView: UIView,RefreshProtocol{
         tableView1?.register(UINib(nibName: "CompleteSmokeCell",bundle: nil), forCellReuseIdentifier: "CompleteSmokeCellId")
         
         // 下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.headerRefresh))
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         // 现在的版本要用mj_header
         tableView1?.mj_header = header
         header.setTitle("", for: .idle)
         header.setTitle("释放更新", for: .pulling)
         header.setTitle("正在刷新...", for: .refreshing)
         // 上拉加载
-        footer.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.footerRefresh))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         tableView1?.mj_footer = footer
         footer.setTitle("", for: .idle)
         footer.setTitle("释放加载", for: .pulling)
@@ -69,7 +69,7 @@ class CompleteSmokeView: UIView,RefreshProtocol{
     func headerRefresh(){
         print("下拉刷新")
         // 结束刷新
-        // self.tableView?.mj_header.beginRefreshing()
+        //self.tableView?.mj_header.beginRefreshing()
         index=1
         loadData1()
     }
@@ -119,7 +119,8 @@ class CompleteSmokeView: UIView,RefreshProtocol{
                 
                 print("json: \(dic)")
                 let model1:CompleteSmokeModel = CompleteSmokeModel.mj_object(withKeyValues: dic)
-                if model1.responseStatus?.resultCode == 0 && model1.events != nil {
+                if model1.responseStatus?.resultCode == 0 && model1.events != nil
+                {
                     let c =  model1.events!.count
                     self.shouldLoadMoreData = c >= 20
                     if c>0
@@ -189,6 +190,7 @@ extension CompleteSmokeView:UITableViewDelegate,UITableViewDataSource
     {
         let cell:CompleteSmokeCell = (tableView.dequeueReusableCell(withIdentifier: "CompleteSmokeCellId", for: indexPath as IndexPath) as? CompleteSmokeCell)!
         let model:CompleteSmokeEventsModel=self.dataArray[indexPath.row] as! CompleteSmokeEventsModel
+    
         cell.refreshData(model: model)
         return cell
     }

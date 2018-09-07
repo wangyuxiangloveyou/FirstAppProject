@@ -90,6 +90,7 @@ class visitorRecordsModel: NSObject {
     var unsolveNum:String?
 }
 
+
 //class a: alarmsDetailsModel {
 //    override init() {
 //        self.bool1=bool1

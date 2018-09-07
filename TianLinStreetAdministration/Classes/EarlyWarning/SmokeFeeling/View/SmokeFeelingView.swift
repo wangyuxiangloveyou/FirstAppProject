@@ -30,6 +30,7 @@ class SmokeFeelingView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
         self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //self.tableView?.backgroundColor=UIColor.init(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         self.tableView?.isScrollEnabled = true
         self.addSubview(tableView!)
@@ -50,14 +51,14 @@ class SmokeFeelingView: UIView {
         tableView?.register(UINib(nibName: "SmokeFeelingCell",bundle: nil), forCellReuseIdentifier: "SmokeFeelingCellId")
         
         // 下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.headerRefresh))
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         // 现在的版本要用mj_header
         tableView?.mj_header = header
         header.setTitle("", for: .idle)
         header.setTitle("释放更新", for: .pulling)
         header.setTitle("正在刷新...", for: .refreshing)
         // 上拉加载
-        footer.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.footerRefresh))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         tableView?.mj_footer = footer
         footer.setTitle("", for: .idle)
         footer.setTitle("释放加载", for: .pulling)

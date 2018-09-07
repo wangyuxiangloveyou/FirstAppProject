@@ -16,7 +16,6 @@ class ServiceViewController: UIViewController {
     var firstView:UnServiceViewView?
     var secondView:ComServiceViewView?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor=UIColor.white
@@ -39,16 +38,14 @@ class ServiceViewController: UIViewController {
         firstView?.cellClourseTWO = {
             (name1) in
             
-            //            let vc=ServiceViewController()
-            //            self.navigationController?.pushViewController(vc, animated: true)
+            //   let vc=ServiceViewController()
+            //   self.navigationController?.pushViewController(vc, animated: true)
         }
         firstView?.cellClourseTHREE = {
             () in
-            //            let vc=ControlViewController()
-            //            self.navigationController?.pushViewController(vc, animated: true)
+            //   let vc=ControlViewController()
+            //   self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-        
     }
     
     func creatNav(){
@@ -58,8 +55,7 @@ class ServiceViewController: UIViewController {
         segCtrl?.delegate=self
         segCtrl?.backgroundColor = UIColor.white
         view.addSubview(segCtrl!)
-        
-        //        let badgeLayer=CATextLayer.createTextLayer()
+        //   let badgeLayer=CATextLayer.createTextLayer()
         //        segCtrl?.layer.addSublayer(badgeLayer)
         //        badgeLayer.frame=CGRect(x: screenWidth/2-20, y: 45, width: 20, height: 20)
         //        badgeLayer.cornerRadius=10
@@ -116,8 +112,8 @@ class ServiceViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
+
 //Mark: KtcSegCtrl代理
 extension ServiceViewController:KtcSegCtrlDelegate{
     func segCtrl(segCtrl: KtcSegCtrl, didClickBtnIndex index: Int) {
@@ -127,11 +123,9 @@ extension ServiceViewController:KtcSegCtrlDelegate{
 }
 
 //Mark: scrollView代理
-
 extension ServiceViewController:UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index=scrollView.contentOffset.x/scrollView.bounds.size.width
         segCtrl?.selectIndex=Int(index)
-        
     }
 }

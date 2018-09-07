@@ -14,8 +14,7 @@ class TimerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor=UIColor.white
-        self.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+       self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         let imageView1=UIImageView()
         self.addSubview(imageView1)
         imageView1.image=UIImage(named: "成功.png")
@@ -24,6 +23,7 @@ class TimerView: UIView {
             make.height.equalTo(100)
             make.center.equalTo(self)
         }
+        
         if number1 == 1{
             let label=UILabel()
             self.addSubview(label)
@@ -62,6 +62,7 @@ class TimerView: UIView {
             }
         }
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        self.isHidden=true
         

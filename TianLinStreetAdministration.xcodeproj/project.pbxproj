@@ -87,10 +87,11 @@
 		B4C3218F20C1301D00B77B19 /* KtcSegCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3218720C1301C00B77B19 /* KtcSegCtrl.swift */; };
 		B4C3219020C1301D00B77B19 /* UIView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3218820C1301C00B77B19 /* UIView+Common.swift */; };
 		B4C3219120C1301D00B77B19 /* NavigationBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C3218920C1301C00B77B19 /* NavigationBarProtocol.swift */; };
+		B4CB3AAD213CD6A000B455A9 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CB3AAB213CD6A000B455A9 /* HomeCollectionViewCell.swift */; };
+		B4CB3AAE213CD6A000B455A9 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4CB3AAC213CD6A000B455A9 /* HomeCollectionViewCell.xib */; };
 		B4D4F2002118269500B931AF /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4F1FF2118269500B931AF /* Base.swift */; };
 		B4D5FA4120C430BE00B3ADDA /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5FA4020C430BE00B3ADDA /* HomePageController.swift */; };
 		B4D5FA4320C430FE00B3ADDA /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5FA4220C430FE00B3ADDA /* HomePageView.swift */; };
-		B4D5FA4720C4313500B3ADDA /* HomePageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D5FA4620C4313500B3ADDA /* HomePageView.xib */; };
 		B4D5FA4920C4336000B3ADDA /* EarlyWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5FA4820C4336000B3ADDA /* EarlyWarningController.swift */; };
 		B4D5FA5020C4466100B3ADDA /* EarlyWarningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5FA4E20C4466100B3ADDA /* EarlyWarningTableViewCell.swift */; };
 		B4D5FA5120C4466100B3ADDA /* EarlyWarningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D5FA4F20C4466100B3ADDA /* EarlyWarningTableViewCell.xib */; };
@@ -225,12 +226,14 @@
 		B419DDFD20CEC538002EA6B5 /* LonginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LonginModel.swift; sourceTree = "<group>"; };
 		B4247CE0210EFF2F0036E8BC /* NewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewModel.swift; sourceTree = "<group>"; };
 		B4560261210B064F00C13985 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
+		B45916282140FFF800431745 /* TianLinStreetAdministration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TianLinStreetAdministration-Bridging-Header.h"; sourceTree = "<group>"; };
 		B47DE3862109B2C5002D9F0D /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		B48222ED20F716E000584E61 /* DrugAddictsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugAddictsDetailsViewController.swift; sourceTree = "<group>"; };
 		B48222EF20F7191100584E61 /* DrugAddictsDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugAddictsDetailsCell.swift; sourceTree = "<group>"; };
 		B48222F020F7191100584E61 /* DrugAddictsDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrugAddictsDetailsCell.xib; sourceTree = "<group>"; };
 		B48222F320F8801C00584E61 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		B48222F420F8801C00584E61 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		B484B3E52140F1BF00456C55 /* TianLinStreetAdministration.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TianLinStreetAdministration.entitlements; sourceTree = "<group>"; };
 		B4A1FB9F20DCA61F0071547B /* DrugAddictsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugAddictsViewController.swift; sourceTree = "<group>"; };
 		B4A1FBA720DCA69F0071547B /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		B4A1FBA920DCA6AA0071547B /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
@@ -276,10 +279,11 @@
 		B4C3218720C1301C00B77B19 /* KtcSegCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KtcSegCtrl.swift; sourceTree = "<group>"; };
 		B4C3218820C1301C00B77B19 /* UIView+Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Common.swift"; sourceTree = "<group>"; };
 		B4C3218920C1301C00B77B19 /* NavigationBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarProtocol.swift; sourceTree = "<group>"; };
+		B4CB3AAB213CD6A000B455A9 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4CB3AAC213CD6A000B455A9 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		B4D4F1FF2118269500B931AF /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		B4D5FA4020C430BE00B3ADDA /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		B4D5FA4220C430FE00B3ADDA /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
-		B4D5FA4620C4313500B3ADDA /* HomePageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageView.xib; sourceTree = "<group>"; };
 		B4D5FA4820C4336000B3ADDA /* EarlyWarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyWarningController.swift; sourceTree = "<group>"; };
 		B4D5FA4E20C4466100B3ADDA /* EarlyWarningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlyWarningTableViewCell.swift; sourceTree = "<group>"; };
 		B4D5FA4F20C4466100B3ADDA /* EarlyWarningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarlyWarningTableViewCell.xib; sourceTree = "<group>"; };
@@ -515,11 +519,13 @@
 		B4C3208E20C11A1B00B77B19 /* TianLinStreetAdministration */ = {
 			isa = PBXGroup;
 			children = (
+				B484B3E52140F1BF00456C55 /* TianLinStreetAdministration.entitlements */,
 				B4D5FA5220C4CBA200B3ADDA /* APP */,
 				B4C3217F20C1301C00B77B19 /* Common */,
 				B4C320BD20C11B9200B77B19 /* Classes */,
 				B4C3208F20C11A1B00B77B19 /* AppDelegate.swift */,
 				B4C3209120C11A1B00B77B19 /* ViewController.swift */,
+				B45916282140FFF800431745 /* TianLinStreetAdministration-Bridging-Header.h */,
 				B4C3209320C11A1B00B77B19 /* Main.storyboard */,
 				B4C3209620C11A1C00B77B19 /* Assets.xcassets */,
 				B4C3209820C11A1C00B77B19 /* LaunchScreen.storyboard */,
@@ -589,7 +595,8 @@
 			isa = PBXGroup;
 			children = (
 				B4D5FA4220C430FE00B3ADDA /* HomePageView.swift */,
-				B4D5FA4620C4313500B3ADDA /* HomePageView.xib */,
+				B4CB3AAB213CD6A000B455A9 /* HomeCollectionViewCell.swift */,
+				B4CB3AAC213CD6A000B455A9 /* HomeCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1154,6 +1161,14 @@
 				TargetAttributes = {
 					B4C3208B20C11A1B00B77B19 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					B4C3209F20C11A1C00B77B19 = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -1224,6 +1239,7 @@
 				B419DDF420CE463A002EA6B5 /* triangle-2.png in Resources */,
 				B48222F220F7191100584E61 /* DrugAddictsDetailsCell.xib in Resources */,
 				B4D5FA5120C4466100B3ADDA /* EarlyWarningTableViewCell.xib in Resources */,
+				B4CB3AAE213CD6A000B455A9 /* HomeCollectionViewCell.xib in Resources */,
 				B4D5FAFF20C561B500B3ADDA /* UntreatedInspectCell.xib in Resources */,
 				B4C3209A20C11A1C00B77B19 /* LaunchScreen.storyboard in Resources */,
 				B4D5FAF320C55F1300B3ADDA /* NowDoorCell.xib in Resources */,
@@ -1243,7 +1259,6 @@
 				B4D5FA6D20C4CBA200B3ADDA /* 匹对成功.png in Resources */,
 				B419DDF220CE463A002EA6B5 /* Voice.png in Resources */,
 				B4A1FBAE20DCA7F60071547B /* UnDrugAddictsViewCell.xib in Resources */,
-				B4D5FA4720C4313500B3ADDA /* HomePageView.xib in Resources */,
 				B4C3209520C11A1B00B77B19 /* Main.storyboard in Resources */,
 				B4D5FA6920C4CBA200B3ADDA /* 运维.png in Resources */,
 			);
@@ -1392,6 +1407,7 @@
 				B4DD51A420C9069A001A6C8A /* HairpinCell.swift in Sources */,
 				B48222F520F8801C00584E61 /* TitleTableViewCell.swift in Sources */,
 				B4A1FBA020DCA61F0071547B /* DrugAddictsViewController.swift in Sources */,
+				B4CB3AAD213CD6A000B455A9 /* HomeCollectionViewCell.swift in Sources */,
 				B4100EB020E3754F00D8BF7A /* CompleteReadModel.swift in Sources */,
 				B4D5FAD220C5249200B3ADDA /* SmokeFeelingCell.swift in Sources */,
 				B4C3218E20C1301D00B77B19 /* Theme.swift in Sources */,
@@ -1611,6 +1627,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1624,8 +1641,10 @@
 			baseConfigurationReference = D9F6BAC0CECE13F5A79CFFE1 /* Pods-TianLinStreetAdministration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAD7T58T5V;
+				CODE_SIGN_ENTITLEMENTS = TianLinStreetAdministration/TianLinStreetAdministration.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Y4GGV3895F;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TianLinStreetAdministration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1633,11 +1652,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wyx.TianLinStreetAdministration;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jieDaoSheQu.tianlin-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e10d98e-e93b-4493-945e-ee70705b27c6";
+				PROVISIONING_PROFILE_SPECIFIER = yiDongSheQun;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "TianLinStreetAdministration/TianLinStreetAdministration-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1646,8 +1668,10 @@
 			baseConfigurationReference = 1B974230D37FD21F8284D4D8 /* Pods-TianLinStreetAdministration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAD7T58T5V;
+				CODE_SIGN_ENTITLEMENTS = TianLinStreetAdministration/TianLinStreetAdministration.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Y4GGV3895F;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TianLinStreetAdministration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1655,11 +1679,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wyx.TianLinStreetAdministration;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jieDaoSheQu.tianlin-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e10d98e-e93b-4493-945e-ee70705b27c6";
+				PROVISIONING_PROFILE_SPECIFIER = yiDongSheQun;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "TianLinStreetAdministration/TianLinStreetAdministration-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1670,7 +1698,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAD7T58T5V;
+				DEVELOPMENT_TEAM = Y4GGV3895F;
 				INFOPLIST_FILE = TianLinStreetAdministrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1692,7 +1720,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BAD7T58T5V;
+				DEVELOPMENT_TEAM = Y4GGV3895F;
 				INFOPLIST_FILE = TianLinStreetAdministrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1712,6 +1740,7 @@
 			baseConfigurationReference = 0942BE6C63EB76B8C2EAED63 /* Pods-TianLinStreetAdministrationUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BAD7T58T5V;
 				INFOPLIST_FILE = TianLinStreetAdministrationUITests/Info.plist;
@@ -1722,6 +1751,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = wyx.TianLinStreetAdministrationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TianLinStreetAdministration;
@@ -1733,6 +1763,7 @@
 			baseConfigurationReference = 254021373397056127A0371C /* Pods-TianLinStreetAdministrationUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BAD7T58T5V;
 				INFOPLIST_FILE = TianLinStreetAdministrationUITests/Info.plist;
@@ -1743,6 +1774,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = wyx.TianLinStreetAdministrationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TianLinStreetAdministration;

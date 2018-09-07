@@ -26,7 +26,8 @@ class NowDoorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
-        self.backgroundColor=UIColor.yellow
+        self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        
         let ud = UserDefaults.standard
         let firstLaunch:Bool = ud.bool(forKey: "Launched");
         if(!firstLaunch){
@@ -65,13 +66,7 @@ class NowDoorView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-//        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
-        //创建一个用于显示背景图片的imageView
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "mmexport1525609772323.jpg")
-        backgroundImage.contentMode = .scaleAspectFill //等比缩放填充（图片可能有部分显示不全）
-        //将背景图片imageView插入到当前视图中
-        tableView?.insertSubview(backgroundImage, at: 0)
+         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true

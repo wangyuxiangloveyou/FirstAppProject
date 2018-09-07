@@ -16,7 +16,6 @@ class ControlViewController: UIViewController {
     var firstView:UnControllerView?
     var secondView:ComControllerView?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor=UIColor.white

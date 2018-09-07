@@ -59,14 +59,14 @@
             }
             
             // 下拉刷新
-            header.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.headerRefresh))
+            header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
             // 现在的版本要用mj_header
             tableView?.mj_header = header
             header.setTitle("", for: .idle)
             header.setTitle("释放更新", for: .pulling)
             header.setTitle("正在刷新...", for: .refreshing)
             // 上拉加载
-            footer.setRefreshingTarget(self, refreshingAction: #selector(CompleteSmokeView.footerRefresh))
+            footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
             tableView?.mj_footer = footer
             footer.setTitle("", for: .idle)
             footer.setTitle("释放加载", for: .pulling)
@@ -87,7 +87,7 @@
         func footerRefresh()
         {
             index = index + 1
-            //        self.tableView?.mj_footer.beginRefreshing()
+            // self.tableView?.mj_footer.beginRefreshing()
             if shouldLoadMoreData {
                 loadData1()
             } else {

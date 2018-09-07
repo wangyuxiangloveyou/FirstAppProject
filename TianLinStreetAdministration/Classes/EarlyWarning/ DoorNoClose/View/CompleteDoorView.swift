@@ -10,34 +10,88 @@
 import UIKit
 import Alamofire
 import MBProgressHUD
+import MJRefresh
 
 class CompleteDoorView: UIView {
-    
+    var shouldLoadMoreData = true
+    var index = 1
+    // 顶部刷新
+    let header = MJRefreshNormalHeader()
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    var pageNum=0
     var tableView:UITableView?
     var dataArray:[AnyObject]=[]
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         loadData1()
+        
+        self.backgroundColor=UIColor.white
+        tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+        self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView?.isScrollEnabled = true
+        self.addSubview(tableView!)
       
     }
     
     func configUI()  {
         //创建表格试图
-        tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
+        //tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-106), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-
-        
-        self.addSubview(tableView!)
+       // self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = true
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         //tableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
         //tableView?.allowsSelection = false
         tableView?.register(UINib(nibName: "CompleteDoorCell",bundle: nil), forCellReuseIdentifier: "CompleteDoorCellId")
+        
+        // 下拉刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        // 现在的版本要用mj_header
+        tableView?.mj_header = header
+        header.setTitle("", for: .idle)
+        header.setTitle("释放更新", for: .pulling)
+        header.setTitle("正在刷新...", for: .refreshing)
+        // 上拉加载
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        tableView?.mj_footer = footer
+        footer.setTitle("", for: .idle)
+        footer.setTitle("释放加载", for: .pulling)
+        footer.setTitle("正在加载...", for: .refreshing)
+        footer.setTitle("没有更多数据", for: .noMoreData)
     }
     
+    //顶部刷新
+    func headerRefresh(){
+        print("下拉刷新")
+        // 结束刷新
+        // self.tableView?.mj_header.beginRefreshing()
+        index=1
+        loadData1()
+    }
     
+    // 底部刷新
+    
+    func footerRefresh()
+    {
+        index = index + 1
+        // self.tableView?.mj_footer.beginRefreshing()
+        if shouldLoadMoreData {
+            loadData1()
+        } else {
+            self.tableView!.mj_footer.endRefreshingWithNoMoreData()
+        }
+    }
+    
+    func startRefreshData1()
+    {
+        self.tableView?.mj_header.beginRefreshing()
+        index = 1
+        loadData1()
+    }
     //获取门禁已完成事件列表
     func loadData1()
     {
@@ -51,16 +105,12 @@ class CompleteDoorView: UIView {
             ],
             "villageIDs":villageArray,
             "status":2,
-            "pageNum":1,
-            "pageSize":5,
+            "pageNum":index,
+            "pageSize":20,
             ]
-        let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.label.text = "加载中"
-        //背景渐变效果
-        hud.alpha = 0.8
-        hud.dimBackground = true
+       
         Alamofire.request("http://47.75.190.168:5000/api/app/getAccessEventList", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
-            hud.hide(animated: true)
+            //hud.hide(animated: true)
             print("获取门禁已完成事件列表")
             print(villageArray)
             if let dic = response.result.value {
@@ -69,16 +119,37 @@ class CompleteDoorView: UIView {
                 print("json: \(dic)")
                 print(json)
                 let model1:CompleteDoorModel = CompleteDoorModel.mj_object(withKeyValues: dic)
-                if model1.responseStatus?.resultCode == 0 && model1.events != nil{
-                self.dataArray=model1.events!
-                }
-            }
+                if model1.responseStatus?.resultCode == 0 && model1.events != nil {
+                    let c =  model1.events!.count
+                    self.shouldLoadMoreData = c >= 20
+                    if c>0
+                    {
+                        if self.index > 1
+                        {
+                            for i in 0..<c
+                            {
+                                self.dataArray.append(model1.events![i])
+                            }
+                        }
+                        else if self.index == 1
+                        {
+                            self.dataArray = model1.events!
+                        }
+                    }
+                    else
+                    {
+                        //self.tableView!.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                }            }
             else
             {
                 print("dic: \(response)")
             }
-            self.configUI()
+            // 结束刷新
             self.tableView?.reloadData()
+            self.configUI()
+            self.tableView?.mj_header.endRefreshing()
+            self.tableView?.mj_footer.endRefreshing()
         }
         
     }

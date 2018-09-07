@@ -17,9 +17,9 @@ class UnDrugAddictsView: UIView {
     //var dataArray=["每天访客超过三次","每天频繁进出6次","连续3天无进出记录"]
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor=UIColor.white
+        //self.backgroundColor=UIColor.white
         configUI()
-        
+         self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
         
         
     }
@@ -38,7 +38,8 @@ class UnDrugAddictsView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-100), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = false
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -85,6 +86,7 @@ extension UnDrugAddictsView:UITableViewDelegate,UITableViewDataSource
             let model:modelsModel=unDrugDataArray1[indexPath.row] as! modelsModel
             name1=model.modelID!
             name2=2
+            comDrugAddictName=model.modelName!
             self.cellClourseONE!()
         }
     }

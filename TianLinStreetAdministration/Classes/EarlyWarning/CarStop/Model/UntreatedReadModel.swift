@@ -17,6 +17,7 @@ import MJExtension
 @objc(UntreatedReadModel)
 
 class UntreatedReadModel: NSObject {
+    
     var resultMessage:String?
     public var events : [UntreatedReadEventsModel]?
     public var prodcutName:String?

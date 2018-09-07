@@ -14,6 +14,7 @@ target 'TianLinStreetAdministration' do
     pod 'MBProgressHUD'
     pod 'IQKeyboardManagerSwift'
     pod 'CVCalendar', '~> 1.4.1'
+    pod 'JPush', '3.0.2'
 #    ˜˜'
     target 'TianLinStreetAdministrationTests' do
         inherit! :search_paths

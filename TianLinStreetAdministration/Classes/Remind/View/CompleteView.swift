@@ -18,7 +18,8 @@ class CompleteView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadData1()
-        self.backgroundColor=UIColor.white
+        //self.backgroundColor=UIColor.white
+         self.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
     }
     
 //    func refershData(dataArray:[UnDrugAddictsGroupsModel]){
@@ -72,15 +73,16 @@ class CompleteView: UIView {
         tableView=UITableView(frame: CGRect(x: 0, y: 0, width:screenWidth , height: screenHeight-100), style: .plain)
         tableView?.dataSource=self
         tableView?.delegate=self
-        tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
+         tableView?.layer.contents = UIImage(named:"mmexport1525609772323.jpg")?.cgImage
+        //tableView?.backgroundColor=UIColor(patternImage: UIImage(named: "mmexport1525609772323.jpg")!)
         self.addSubview(tableView!)
         self.tableView?.isScrollEnabled = false
         self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         //tableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
         //tableView?.allowsSelection = false
         //设置分割线颜色
-        //        self.tableView?.separatorColor = UIColor.white
-        //        self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        // self.tableView?.separatorColor = UIColor.white
+        // `self.tableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         tableView?.register(UINib(nibName: "UntreatedViewCell",bundle: nil), forCellReuseIdentifier: "UntreatedViewCellId")
     }
     

@@ -23,7 +23,6 @@
 //            self.responseStatus=StatusModel1.mj_object(withKeyValues: self.responseStatus)
 //        }
     }
-    
     class StatusModel1: NSObject {
         var resultCode:NSNumber?
         var resultMessage:String?

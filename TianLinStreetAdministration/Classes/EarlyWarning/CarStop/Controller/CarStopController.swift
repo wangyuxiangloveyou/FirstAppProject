@@ -143,12 +143,13 @@ class CarStopController: UIViewController {
 extension CarStopController:KtcSegCtrlDelegate{
     func segCtrl(segCtrl: KtcSegCtrl, didClickBtnIndex index: Int) {
         scrollView?.setContentOffset(CGPoint(x: CGFloat(index)*screenWidth, y: 0), animated: true)
-//        if segCtrl.selectIndex == 0{
-//            firstView?.startRefreshData()
-//        }
-//        if segCtrl.selectIndex == 1{
-//            secondView?.startRefreshData()
-//        }
+        if segCtrl.selectIndex == 0{
+            firstView?.startRefreshData1()
+        }
+        
+        if segCtrl.selectIndex == 1{
+            self.secondView?.startRefreshData1()
+        }
     }
 }
 
@@ -158,11 +159,12 @@ extension CarStopController:UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index=scrollView.contentOffset.x/scrollView.bounds.size.width
         segCtrl?.selectIndex=Int(index)
-//        if segCtrl?.selectIndex == 0{
-//            firstView?.startRefreshData()
-//        }
-//        if segCtrl?.selectIndex == 1{
-//            secondView?.startRefreshData()
-//        }
+        if segCtrl?.selectIndex == 0{
+            firstView?.startRefreshData1()
+        }
+        
+        if segCtrl?.selectIndex == 1{
+            self.secondView?.startRefreshData1()
+        }
     }
 }

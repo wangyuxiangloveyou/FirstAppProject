@@ -155,7 +155,7 @@ extension EarlyWarningController{
             let vc = DoorNoCloseController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        if indexPath.row == 2 {
+        if indexPath.row == 2{
             let vc = CarStopController()
             self.navigationController?.pushViewController(vc, animated: true)
         }

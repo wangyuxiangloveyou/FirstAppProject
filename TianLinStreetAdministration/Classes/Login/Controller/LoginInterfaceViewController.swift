@@ -11,11 +11,8 @@
     import Alamofire
     import Kingfisher
     import Toast_Swift
-    import SwiftyJSON
     import MJExtension
     import MBProgressHUD
-    
-    
     
     class LoginInterfaceViewController: UIViewController, UITextFieldDelegate {
         var textFile1=UITextField()
@@ -274,28 +271,30 @@
             }
             
             
-//            let parameters: Parameters = [
-//                "head":[
-//                    "platform":"app",
-//                    "timestamp":timeStamp,
-//                    "token":"app",
-//                ],
-//                "userName": loginName,
-//                "password": loginPassword
-//            ]
-            
-            
             let parameters: Parameters = [
                 "head":[
                     "platform":"app",
                     "timestamp":timeStamp,
                     "token":"app",
                     "longitude":longitude,
-                    "latitude":latitude,
+                     "latitude":latitude,
                 ],
-                "userName": "apptest",
-                "password": "123456"
+                "userName": loginName,
+                "password": loginPassword
             ]
+            
+            
+//            let parameters: Parameters = [
+//                "head":[
+//                    "platform":"app",
+//                    "timestamp":timeStamp,
+//                    "token":"app",
+//                    "longitude":longitude,
+//                    "latitude":latitude,
+//                ],
+//                "userName": "apptest",
+//                "password": "123456"
+//            ]
             print(parameters)
 //          let vc=HomePageController()
 //          vc.hidesBottomBarWhenPushed=true

@@ -11,16 +11,21 @@ import UIKit
 import Alamofire
 import MJRefresh
 
+
 public var carId=""
 public typealias OperationSelected = ((_ objct:AnyObject) -> Void)
 class UntreatedReadView: UIView {
-    var tableView:UITableView?
-    var cellClourse:OperationSelected?
-    var dataArray:[AnyObject]=[]
+    var shouldLoadMoreData = true
+    var index = 1
     // 顶部刷新
     let header = MJRefreshNormalHeader()
     // 底部刷新
     let footer = MJRefreshAutoNormalFooter()
+    var pageNum=0
+    var tableView:UITableView?
+    var cellClourse:OperationSelected?
+    var dataArray:[AnyObject]=[]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
@@ -49,44 +54,49 @@ class UntreatedReadView: UIView {
         tableView?.register(UINib(nibName: "UntreatedReadCell",bundle: nil), forCellReuseIdentifier: "UntreatedReadCellId")
     
         
+        
         // 下拉刷新
-        header.setRefreshingTarget(self, refreshingAction: Selector("headerRefresh"))
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         // 现在的版本要用mj_header
         tableView?.mj_header = header
         header.setTitle("", for: .idle)
         header.setTitle("释放更新", for: .pulling)
         header.setTitle("正在刷新...", for: .refreshing)
         // 上拉加载
-        footer.setRefreshingTarget(self, refreshingAction: Selector("footerRefresh"))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         tableView?.mj_footer = footer
         footer.setTitle("", for: .idle)
         footer.setTitle("释放加载", for: .pulling)
         footer.setTitle("正在加载...", for: .refreshing)
+        footer.setTitle("没有更多数据", for: .noMoreData)
 
     }
-    // 顶部刷新
+    //顶部刷新
     func headerRefresh(){
         print("下拉刷新")
         // 结束刷新
-        self.tableView?.mj_header.beginRefreshing()
+        // self.tableView?.mj_header.beginRefreshing()
+        index=1
         loadData1()
     }
     
-//    // 底部刷新
-//    var index = 0
-//    func footerRefresh(){
-//        print("上拉刷新")
-//        self.tableView?.mj_footer.endRefreshing()
-//        
-//        // 2次后模拟没有更多数据
-//        index = index + 1
-//        if index > 2 {
-//            self.tableView?.mj_footer.endRefreshing()
-//        }
-//    }
-    func startRefreshData()
+    // 底部刷新
+    
+    func footerRefresh()
+    {
+        index = index + 1
+        // self.tableView?.mj_footer.beginRefreshing()
+        if shouldLoadMoreData {
+            loadData1()
+        } else {
+            self.tableView!.mj_footer.endRefreshingWithNoMoreData()
+        }
+    }
+    
+    func startRefreshData1()
     {
         self.tableView?.mj_header.beginRefreshing()
+        index = 1
         loadData1()
     }
     //获取停车未读事件列表
@@ -102,8 +112,8 @@ class UntreatedReadView: UIView {
             ],
             "villageIDs":villageArray,
             "status":0,
-            "pageNum":1,
-            "pageSize":10,
+            "pageNum":index,
+            "pageSize":15,
             ]
         
         Alamofire.request("http://47.75.190.168:5000/api/app/getParkingEventList", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{ (response)  in
@@ -120,17 +130,38 @@ class UntreatedReadView: UIView {
                 
 //                if (json?.length)! >= 60{
                     let model1:UntreatedReadModel = UntreatedReadModel.mj_object(withKeyValues: dic)
-                if model1.responseStatus?.resultCode == 0 && model1.events != nil{
-                    self.dataArray=model1.events!
-               }
-             //   }
+                if model1.responseStatus?.resultCode == 0 && model1.events != nil {
+                    let c =  model1.events!.count
+                    self.shouldLoadMoreData = c >= 20
+                    if c>0
+                    {
+                        if self.index > 1
+                        {
+                            for i in 0..<c
+                            {
+                                self.dataArray.append(model1.events![i])
+                            }
+                        }
+                        else if self.index == 1
+                        {
+                            self.dataArray = model1.events!
+                        }
+                    }
+                    else
+                    {
+                        //self.tableView!.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                }             //   }
             }
             else
             {
                 print("dic: \(response)")
             }
+            // 结束刷新
             self.tableView?.reloadData()
+            self.configUI()
             self.tableView?.mj_header.endRefreshing()
+            self.tableView?.mj_footer.endRefreshing()
         }
     }
     

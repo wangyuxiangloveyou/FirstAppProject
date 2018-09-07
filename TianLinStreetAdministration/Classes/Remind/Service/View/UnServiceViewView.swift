@@ -81,9 +81,8 @@ extension UnServiceViewView:UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.cellClourseONE != nil{
-//            let cell1:UnServiceViewCell = tableView.dequeueReusableCell(withIdentifier: "UnServiceViewCellId", for: indexPath as IndexPath) as! UnServiceViewCell
-//            name1=cell1.nameLabel.text!
-//
+//  let cell1:UnServiceViewCell = tableView.dequeueReusableCell(withIdentifier: "UnServiceViewCellId", for: indexPath as IndexPath) as! UnServiceViewCell
+//  name1=cell1.nameLabel.text!
            name1=dataArray[indexPath.row]
              print(name1)
             self.cellClourseONE!( name1 as AnyObject)

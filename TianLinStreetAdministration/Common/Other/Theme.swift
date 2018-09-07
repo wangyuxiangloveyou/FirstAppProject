@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-
+public var comDrugAddictName:String=""
+public var unDrugAddictName:String=""
 public var unDrugDataArray1:[AnyObject]=[]
 public var villageID:String=""
 public var villageName:String=""
@@ -19,6 +20,7 @@ public var homeNumber1:NSNumber=0
 public var homeNumber2:NSNumber=0
 public var homeNumber3:NSNumber=0
 public var homeNumber4:NSNumber=0
+public var blockName1:String=""
 public var blockName2:String=""
 public var blockName3:String=""
 public var blockName4:String=""

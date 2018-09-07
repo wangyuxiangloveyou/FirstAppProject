@@ -21,7 +21,6 @@ class NowSmokeView: UIView {
         self.addSubview(tableView!)
         
         configUI()
-       
     }
     
     func configUI()  {
