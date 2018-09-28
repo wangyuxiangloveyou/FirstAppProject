@@ -36,12 +36,10 @@
 		B419DDF220CE463A002EA6B5 /* Voice.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDE820CE4638002EA6B5 /* Voice.png */; };
 		B419DDF320CE463A002EA6B5 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDE920CE4638002EA6B5 /* Arrow.png */; };
 		B419DDF420CE463A002EA6B5 /* triangle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDEA20CE4639002EA6B5 /* triangle-2.png */; };
-		B419DDF520CE463A002EA6B5 /*  circle-green.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDEB20CE4639002EA6B5 /*  circle-green.png */; };
 		B419DDF620CE463A002EA6B5 /* checkbox_off_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDEC20CE4639002EA6B5 /* checkbox_off_light.png */; };
 		B419DDF720CE463A002EA6B5 /* Check box.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDED20CE4639002EA6B5 /* Check box.png */; };
 		B419DDF820CE463A002EA6B5 /* radio_off_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDEE20CE4639002EA6B5 /* radio_off_light.png */; };
 		B419DDF920CE463A002EA6B5 /* radio_on_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDEF20CE4639002EA6B5 /* radio_on_light.png */; };
-		B419DDFA20CE463A002EA6B5 /*  circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B419DDF020CE463A002EA6B5 /*  circle.png */; };
 		B419DDFE20CEC538002EA6B5 /* LonginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419DDFD20CEC538002EA6B5 /* LonginModel.swift */; };
 		B4247CE1210EFF2F0036E8BC /* NewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4247CE0210EFF2F0036E8BC /* NewModel.swift */; };
 		B4560262210B064F00C13985 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4560261210B064F00C13985 /* DetailHeaderView.swift */; };
@@ -217,12 +215,10 @@
 		B419DDE820CE4638002EA6B5 /* Voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voice.png; sourceTree = "<group>"; };
 		B419DDE920CE4638002EA6B5 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		B419DDEA20CE4639002EA6B5 /* triangle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle-2.png"; sourceTree = "<group>"; };
-		B419DDEB20CE4639002EA6B5 /*  circle-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " circle-green.png"; sourceTree = "<group>"; };
 		B419DDEC20CE4639002EA6B5 /* checkbox_off_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_off_light.png; sourceTree = "<group>"; };
 		B419DDED20CE4639002EA6B5 /* Check box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Check box.png"; sourceTree = "<group>"; };
 		B419DDEE20CE4639002EA6B5 /* radio_off_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_off_light.png; sourceTree = "<group>"; };
 		B419DDEF20CE4639002EA6B5 /* radio_on_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_on_light.png; sourceTree = "<group>"; };
-		B419DDF020CE463A002EA6B5 /*  circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " circle.png"; sourceTree = "<group>"; };
 		B419DDFD20CEC538002EA6B5 /* LonginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LonginModel.swift; sourceTree = "<group>"; };
 		B4247CE0210EFF2F0036E8BC /* NewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewModel.swift; sourceTree = "<group>"; };
 		B4560261210B064F00C13985 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
@@ -820,8 +816,6 @@
 			isa = PBXGroup;
 			children = (
 				B4DC59D320DC94A2002E5847 /* mmexport1525609772323.jpg */,
-				B419DDEB20CE4639002EA6B5 /*  circle-green.png */,
-				B419DDF020CE463A002EA6B5 /*  circle.png */,
 				B419DDE920CE4638002EA6B5 /* Arrow.png */,
 				B419DDED20CE4639002EA6B5 /* Check box.png */,
 				B419DDEC20CE4639002EA6B5 /* checkbox_off_light.png */,
@@ -1221,7 +1215,6 @@
 				B4D5FA6E20C4CBA200B3ADDA /* 提示.png in Resources */,
 				B419DDF620CE463A002EA6B5 /* checkbox_off_light.png in Resources */,
 				B4DC59D220DC925C002E5847 /* CompleteViewCell.xib in Resources */,
-				B419DDFA20CE463A002EA6B5 /*  circle.png in Resources */,
 				B4DC59CE20DC9239002E5847 /* UntreatedViewCell.xib in Resources */,
 				B4D5FA6A20C4CBA200B3ADDA /* 提醒.png in Resources */,
 				B4D5FA7420C4CBA200B3ADDA /* 楼栋.png in Resources */,
@@ -1229,7 +1222,6 @@
 				B4D5FA6820C4CBA200B3ADDA /* 语音输入.png in Resources */,
 				B419DDF720CE463A002EA6B5 /* Check box.png in Resources */,
 				B4D5FA7520C4CBA200B3ADDA /* 人像.png in Resources */,
-				B419DDF520CE463A002EA6B5 /*  circle-green.png in Resources */,
 				B4D5FAD320C5249200B3ADDA /* SmokeFeelingCell.xib in Resources */,
 				B4D5FAFB20C5619A00B3ADDA /* NowInspectCell.xib in Resources */,
 				B4D5FB1120C5641700B3ADDA /* UntreatedReadCell.xib in Resources */,

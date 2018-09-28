@@ -255,6 +255,10 @@
         //            }
         //        }
         
+//        <array>
+//        <string>location</string>
+//        <string>remote-notification</string>
+//        </array>
         func enterClick(Btn:UIButton)
         {
             let loginName:String = self.textFile1.text!
